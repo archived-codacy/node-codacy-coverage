@@ -1,0 +1,15 @@
+{
+  "enforceConst": false,
+  "ignore": [
+    0,
+    1,
+    100,
+    200,
+    50,
+    10,
+    3,
+    204,
+    418
+  ],
+  "reporter": "simple"
+}

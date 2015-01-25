@@ -1,0 +1,54 @@
+{
+  "name": "codacy-coverage",
+  "version": "0.0.1",
+  "description": "Code Coverage reporter for Codacy",
+  "keywords": [
+    "codacy",
+    "coverage",
+    "code coverage",
+    "codacy.com"
+  ],
+  "homepage": "http://github.com/DavidTPate/codacy-coverage",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DavidTPate/codacy-coverage.git"
+  },
+  "bugs": {
+    "url": "http://github.com/DavidTPate/codacy-coverage/issues"
+  },
+  "author": {
+    "name": "David Pate",
+    "email": "davidtpate@gmail.com",
+    "url": "https://github.com/DavidTPate"
+  },
+  "contributors": [],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "joi": "^5.x",
+    "lcov-parse": "0.0.8",
+    "q": "^1.1.x",
+    "request-promise": "^0.3.x"
+  },
+  "devDependencies": {
+    "buddy.js": "^0.x",
+    "chai": "<1.10",
+    "chai-as-promised": "^4.x",
+    "dirty-chai": "^1.x",
+    "nsp": "^1.x",
+    "mocha": "^2.x",
+    "nock": "^0.57.0",
+    "istanbul": "^0.x",
+    "jscs": "^1.x",
+    "jshint": "^2.x",
+    "jsinspect": "^0.x"
+  },
+  "scripts": {
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && jshint --show-non-errors . && jscs . && buddy index.js lib test && nsp audit-package"
+  }
+}
