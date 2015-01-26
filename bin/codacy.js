@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 (function (program, logDriver, util, lib, getGitData, Q) {
     'use strict';
     process.stdin.resume();
