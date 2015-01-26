@@ -12,7 +12,7 @@
     });
 
     program
-        .version('0.0.3')
+        .version('0.0.4')
         .usage('[options]')
         .option('-f, --format [value]', 'Coverage input format')
         .option('-t, --token [value]', 'Set Token')
@@ -40,8 +40,8 @@
             commitId = program.commit,
             format = program.format || 'lcov';
 
-        Q.all([lib.getParser(format).parse(input),
-            getGitData.getCommitId(commitId)]).spread(function (parsedCoverage, commitId) {
+        return Q.all([lib.getParser(format).parse(input), getGitData.getCommitId(commitId)]).spread(function (parsedCoverage, commitId) {
+            logDriver.logger.trace(parsedCoverage);
             lib.reporter({
                 endpoint: program.endpoint
             }).sendCoverage(token, commitId, parsedCoverage).then(function () {

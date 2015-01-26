@@ -80,14 +80,14 @@
                 ]
             };
 
-            helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function (nock) {
-                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --token 1234 --commit 4321', function (err, res) {
+            helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function () {
+                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --debug --token 1234 --commit 4321', function (err, res) {
                     if (err) {
                         return done(err);
                     }
 
-                    console.log(res);
-                    nock.done(); //TODO: Need to check this, timing issues occur right now
+                    expect(res).to.match(/301 Moved Permanently/);
+                    //nock.done(); //TODO: Need to figure out how to use nock here. Since it's a separate process, it's not tied together.
                     done();
                 });
             });
