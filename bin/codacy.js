@@ -12,7 +12,7 @@
     });
 
     program
-        .version('0.0.2')
+        .version('0.0.3')
         .usage('[options]')
         .option('-f, --format [value]', 'Coverage input format')
         .option('-t, --token [value]', 'Set Token')
@@ -32,7 +32,7 @@
     process.stdin.on('end', function () {
         logDriver.logger.trace('Received file through stdin');
 
-        if (program.help) {
+        if (program.help === true) {
             return;
         }
 

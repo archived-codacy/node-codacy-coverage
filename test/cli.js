@@ -41,7 +41,7 @@
                 done();
             });
         });
-        it('should be able to parse lcov data', function (done) {
+        it.only('should be able to parse lcov data', function (done) {
             var bodyObject = {
                 total: 92,
                 fileReports: [
@@ -80,13 +80,14 @@
                 ]
             };
 
-            helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function () {
-                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --token 1234 --commit 4321', { timeout: 1000 }, function (err) {
+            helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function (nock) {
+                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --token 1234 --commit 4321', function (err, res) {
                     if (err) {
                         return done(err);
                     }
 
-                    //nock.done(); //TODO: Need to check this, timing issues occur right now
+                    console.log(res);
+                    nock.done(); //TODO: Need to check this, timing issues occur right now
                     done();
                 });
             });
