@@ -8,9 +8,9 @@
 
     describe('Command Line', function () {
         it('should be able to get help with `-h`', function (done) {
-            exec('node ./bin/codacyCoverage.js -h', function (err, res) {
+            exec('node ./bin/codacy.js -h', function (err, res) {
                 expect(res).to.equal('\n' +
-                    '  Usage: codacyCoverage [options]\n\n' +
+                    '  Usage: codacy [options]\n\n' +
                     '  Options:\n\n' +
                     '    -h, --help              output usage information\n' +
                     '    -V, --version           output the version number\n' +
@@ -25,9 +25,9 @@
             });
         });
         it('should be able to get help with `-help`', function (done) {
-            exec('node ./bin/codacyCoverage.js -help', function (err, res) {
+            exec('node ./bin/codacy.js -help', function (err, res) {
                 expect(res).to.equal('\n' +
-                    '  Usage: codacyCoverage [options]\n\n' +
+                    '  Usage: codacy [options]\n\n' +
                     '  Options:\n\n' +
                     '    -h, --help              output usage information\n' +
                     '    -V, --version           output the version number\n' +
@@ -81,7 +81,7 @@
             };
 
             helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function (nock) {
-                exec('cat ./test/mock/lcov.info | node ./bin/codacyCoverage.js --token 1234 --commit 4321', { timeout: 1000 }, function (err, res) {
+                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --token 1234 --commit 4321', { timeout: 1000 }, function (err, res) {
                     if (err) {
                         return done(err);
                     }

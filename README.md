@@ -1,14 +1,14 @@
-# codacy-coverage
+# codacy
 Code Coverage reporter for Codacy
 
-[![Build Status](https://travis-ci.org/DavidTPate/codacy-coverage.svg?branch=master)](https://travis-ci.org/DavidTPate/codacy-coverage)
+[![Build Status](https://travis-ci.org/DavidTPate/codacy.svg?branch=master)](https://travis-ci.org/DavidTPate/codacy)
 
 [Codacy](https://codacy.com/) support for Node.js. Get coverage reporting and code analysis for Node.js from Codacy.
 
 ##Installation:
-Add the latest version of `codacy-coverage` to your package.json:
+Add the latest version of `codacy` to your package.json:
 ```
-npm install codacy-coverage --save
+npm install codacy --save
 ```
 
 If you're using mocha, add `mocha-lcov-reporter` to your package.json:
@@ -18,9 +18,9 @@ npm install mocha-lcov-reporter --save
 
 ##Usage:
 
-This script ( `bin/codacyCoverage.js` ) can take standard input from any tool that emits the lcov data format (including [mocha](http://visionmedia.github.com/mocha/)'s [LCov reporter](https://npmjs.org/package/mocha-lcov-reporter)) and send it to Codacy to report your code coverage there.
+This script ( `bin/codacy.js` ) can take standard input from any tool that emits the lcov data format (including [mocha](http://visionmedia.github.com/mocha/)'s [LCov reporter](https://npmjs.org/package/mocha-lcov-reporter)) and send it to Codacy to report your code coverage there.
 
-Once your app is instrumented for coverage, and building, you need to pipe the lcov output to `./node_modules/codacy-coverage/bin/codacyCoverage.js`.
+Once your app is instrumented for coverage, and building, you need to pipe the lcov output to `./node_modules/codacy/bin/codacy.js`.
 
 You'll need to provide the Report token from Codacy via an environment variable:
 * CODACY_REPO_TOKEN (the secret repo token from Codacy.com)
@@ -33,7 +33,7 @@ You'll need to provide the Report token from Codacy via an environment variable:
 ```sh
 NODE_ENV=test YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha \
   --require blanket \
-  --reporter mocha-lcov-reporter |  ./node_modules/codacy-coverage/bin/codacyCoverage.js
+  --reporter mocha-lcov-reporter |  ./node_modules/codacy/bin/codacy.js
 ```
 ### [Mocha](http://visionmedia.github.io/mocha/) + [JSCoverage](https://github.com/fishbar/jscoverage)
 
@@ -41,20 +41,20 @@ Instrumenting your app for coverage is probably harder than it needs to be (read
 
 In mocha, if you've got your code instrumented for coverage, the command for a travis build would look something like this:
 ```sh
-YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter | ./node_modules/codacy-coverage/bin/codacyCoverage.js
+YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter | ./node_modules/codacy/bin/codacy.js
 ```
 ### [Istanbul](https://github.com/gotwarlost/istanbul)
 
 **With Mocha:**
 
 ```sh
-istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/codacy-coverage/bin/codacyCoverage.js && rm -rf ./coverage
+istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/codacy/bin/codacy.js && rm -rf ./coverage
 ```
 
 **With Jasmine:**
 
 ```sh
-istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/codacy-coverage/bin/codacyCoverage.js && rm -rf ./coverage
+istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/codacy/bin/codacy.js && rm -rf ./coverage
 ```
 
 ### [Poncho](https://github.com/deepsweet/poncho)
@@ -64,7 +64,7 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 - Run your tests with a command like this:
 
 ```sh
-./node_modules/.bin/poncho -R lcov test/test.html | ./node_modules/codacy-coverage/bin/codacyCoverage.js
+./node_modules/.bin/poncho -R lcov test/test.html | ./node_modules/codacy/bin/codacy.js
 ```
 
 ## License

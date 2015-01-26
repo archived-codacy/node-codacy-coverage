@@ -1,5 +1,5 @@
 {
-  "name": "codacy-coverage",
+  "name": "codacy",
   "version": "0.0.1",
   "description": "Code Coverage reporter for Codacy",
   "keywords": [
@@ -8,13 +8,13 @@
     "code coverage",
     "codacy.com"
   ],
-  "homepage": "http://github.com/DavidTPate/codacy-coverage",
+  "homepage": "http://github.com/DavidTPate/codacy",
   "repository": {
     "type": "git",
-    "url": "git://github.com/DavidTPate/codacy-coverage.git"
+    "url": "git://github.com/DavidTPate/codacy.git"
   },
   "bugs": {
-    "url": "http://github.com/DavidTPate/codacy-coverage/issues"
+    "url": "http://github.com/DavidTPate/codacy/issues"
   },
   "author": {
     "name": "David Pate",
@@ -30,7 +30,7 @@
   ],
   "main": "index.js",
   "bin": {
-    "codacy-coverage": "./bin/codacyCoverage.js"
+    "codacy": "./bin/codacyCoverage.js"
   },
   "dependencies": {
     "commander": "^2.6.0",
