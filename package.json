@@ -30,7 +30,7 @@
   ],
   "main": "index.js",
   "bin": {
-    "codacy": "./bin/codacyCoverage.js"
+    "codacy": "./bin/codacy.js"
   },
   "dependencies": {
     "commander": "^2.6.0",
