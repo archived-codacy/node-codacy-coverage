@@ -1,3 +1,6 @@
-/**
- * Created by david.pate on 1/24/15.
- */
+(function (parser, reporter) {
+    module.exports = {
+        getParser: parser.getParser,
+        reporter: reporter
+    };
+}(require('./lib/coverageParser'), require('./lib/reporter')));

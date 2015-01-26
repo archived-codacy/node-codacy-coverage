@@ -29,9 +29,14 @@
     }
   ],
   "main": "index.js",
+  "bin": {
+    "codacy-coverage": "./bin/codacyCoverage.js"
+  },
   "dependencies": {
+    "commander": "^2.6.0",
     "joi": "^5.x",
     "lcov-parse": "0.0.8",
+    "log-driver": "^1.2.5",
     "q": "^1.1.x",
     "request-promise": "^0.3.x"
   },
