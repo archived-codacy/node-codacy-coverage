@@ -36,7 +36,7 @@
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
                 .then(function () {
                     return expect(request({
-                        url: 'https://codacy.com/coverage/1234/4321',
+                        url: 'https://www.codacy.com/api/coverage/1234/4321',
                         method: 'POST',
                         json: sampleCoverageData,
                         resolveWithFullResponse: true
@@ -49,7 +49,7 @@
         it('should be able to use the reporter to send coverage data', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
                 .then(function () {
-                    return expect(reporter({endpoint: 'https://codacy.com/coverage/:token/:commitId'})
+                    return expect(reporter({endpoint: 'https://www.codacy.com/api/coverage/:token/:commitId'})
                         .sendCoverage('1234', '4321', sampleCoverageData))
                         .to.eventually.be.fulfilled;
                 });
@@ -57,7 +57,7 @@
         it('should receive error when non-200 status code', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator, 204)
                 .then(function () {
-                    return expect(reporter({endpoint: 'https://codacy.com/coverage/:token/:commitId'})
+                    return expect(reporter({endpoint: 'https://www.codacy.com/api/coverage/:token/:commitId'})
                         .sendCoverage('1234', '4321', sampleCoverageData))
                         .to.eventually.be.rejectedWith(Error, 'Expected Status Code of 200, but got [204]');
                 });
@@ -65,7 +65,7 @@
         it('should receive error when 400 level status code', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator, 418)
                 .then(function () {
-                    return expect(reporter({endpoint: 'https://codacy.com/coverage/:token/:commitId'})
+                    return expect(reporter({endpoint: 'https://www.codacy.com/api/coverage/:token/:commitId'})
                         .sendCoverage('1234', '4321', sampleCoverageData))
                         .to.eventually.be.rejectedWith(Error, 'Expected Successful Status Code, but got [418]');
                 });

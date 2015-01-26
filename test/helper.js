@@ -18,8 +18,8 @@
                 expect(commitId).to.be.ok();
                 expect(bodyValidator).to.be.ok();
 
-                return deferred.resolve(nock('https://codacy.com')
-                    .post('/coverage/' + token + '/' + commitId, function (body) {
+                return deferred.resolve(nock('https://www.codacy.com')
+                    .post('/api/coverage/' + token + '/' + commitId, function (body) {
                         var result = bodyValidator.validate(body);
                         return result.error ? false : true;
                     })

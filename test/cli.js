@@ -41,7 +41,7 @@
                 done();
             });
         });
-        it.only('should be able to parse lcov data', function (done) {
+        it('should be able to parse lcov data', function (done) {
             var bodyObject = {
                 total: 92,
                 fileReports: [
@@ -86,7 +86,7 @@
                         return done(err);
                     }
 
-                    expect(res).to.match(/301 Moved Permanently/);
+                    expect(res).to.match(/Error: Expected Successful Status Code, but got \[404\]/);
                     console.log(res);
                     //nock.done(); //TODO: Need to figure out how to use nock here. Since it's a separate process, it's not tied together.
                     done();
