@@ -12,7 +12,7 @@
     });
 
     program
-        .version('0.0.4')
+        .version('0.0.5')
         .usage('[options]')
         .option('-f, --format [value]', 'Coverage input format')
         .option('-t, --token [value]', 'Set Token')
@@ -27,7 +27,7 @@
         debug: program.debug
     });
 
-    logDriver.logger.info(util.format('Started with: token [%j], endpoint [%j], format [%j], verbose [%j], debug [%j]', program.token, program.endpoint, program.format, program.verbose, program.debug));
+    logDriver.logger.info(util.format('Started with: token [%j], commitId [%j], endpoint [%j], format [%j], verbose [%j], debug [%j]', program.token, program.commit, program.endpoint, program.format, program.verbose, program.debug));
 
     process.stdin.on('end', function () {
         logDriver.logger.trace('Received file through stdin');

@@ -87,6 +87,7 @@
                     }
 
                     expect(res).to.match(/301 Moved Permanently/);
+                    console.log(res);
                     //nock.done(); //TODO: Need to figure out how to use nock here. Since it's a separate process, it's not tied together.
                     done();
                 });
