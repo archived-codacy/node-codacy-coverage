@@ -6,4 +6,4 @@ node_js:
 matrix:
   fast_finish: true
 script: npm test
-after_script: cat ./coverage/lcov.info | .//bin/codacy.js
+after_script: cat ./coverage/lcov.info | ./bin/codacy.js
