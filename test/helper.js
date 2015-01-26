@@ -1,5 +1,6 @@
 (function (nock, chai, Q) {
     var expect = chai.expect;
+    chai.use(require('chai-as-promised'));
     chai.use(require('dirty-chai'));
     chai.config.includeStack = true;
 
@@ -15,7 +16,7 @@
                 expect(commitId).to.be.ok();
                 expect(bodyValidator).to.be.ok();
 
-                deferred.resolve(nock('https://codacy.com')
+                return deferred.resolve(nock('https://codacy.com')
                     .post('/coverage/' + token + '/' + commitId, function (body) {
                         var result = bodyValidator.validate(body);
                         return result.error ? false : true;
