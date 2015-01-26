@@ -1,4 +1,6 @@
 (function (nock, chai, Q) {
+    'use strict';
+
     var expect = chai.expect;
     chai.use(require('chai-as-promised'));
     chai.use(require('dirty-chai'));

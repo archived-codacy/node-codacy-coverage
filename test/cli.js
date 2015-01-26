@@ -80,8 +80,8 @@
                 ]
             };
 
-            helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function (nock) {
-                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --token 1234 --commit 4321', { timeout: 1000 }, function (err, res) {
+            helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function () {
+                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --token 1234 --commit 4321', { timeout: 1000 }, function (err) {
                     if (err) {
                         return done(err);
                     }
