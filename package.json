@@ -33,12 +33,12 @@
     "codacy": "./bin/codacy.js"
   },
   "dependencies": {
-    "commander": "^2.6.0",
+    "commander": "^2.x",
     "joi": "^5.x",
-    "lcov-parse": "0.0.8",
-    "log-driver": "^1.2.5",
-    "q": "^1.1.x",
-    "request-promise": "^0.3.x"
+    "lcov-parse": "0.x",
+    "log-driver": "^1.x",
+    "q": "^1.x",
+    "request-promise": "^0.x"
   },
   "devDependencies": {
     "buddy.js": "^0.x",
@@ -47,7 +47,7 @@
     "dirty-chai": "^1.x",
     "nsp": "^1.x",
     "mocha": "^2.x",
-    "nock": "^0.57.0",
+    "nock": "^0.x",
     "istanbul": "^0.x",
     "jscs": "^1.x",
     "jshint": "^2.x",
