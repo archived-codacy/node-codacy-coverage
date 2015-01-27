@@ -20,6 +20,9 @@
                     parser.getParser(format);
                 }).to.not.throw();
             });
+            it('shouldn\'t be able to parse a blank coverage file for ' + format, function () {
+                return expect(parser.getParser(format).parse()).to.eventually.be.rejectedWith(Error, 'Coverage data or file path required');
+            });
         });
     });
 }(require('joi'), require('chai'), require('q'), require('util'), require('../lib/coverageParser')));
