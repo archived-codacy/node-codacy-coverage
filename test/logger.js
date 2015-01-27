@@ -7,7 +7,7 @@
     chai.config.includeStack = true;
 
     describe('Logger', function () {
-        beforeEach(function() {
+        beforeEach(function () {
             process.env.CODACY_VERBOSE = '';
             process.env.CODACY_DEBUG = '';
         });
