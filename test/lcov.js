@@ -18,7 +18,7 @@
                         total: 92,
                         fileReports: [
                             {
-                                filename: 'codacy/lib/reporter.js',
+                                filename: 'lib/reporter.js',
                                 coverage: {
                                     1: 1,
                                     25: 1,
@@ -59,7 +59,7 @@
                         total: null,
                         fileReports: [
                             {
-                                filename: 'codacy/lib/reporter.js',
+                                filename: 'lib/reporter.js',
                                 coverage: {},
                                 total: null
                             }
