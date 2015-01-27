@@ -81,7 +81,7 @@
             };
 
             helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function () {
-                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --debug --token 1234 --commit 4321', function (err, res) {
+                exec('cat ./test/mock/lcov.info | node ./bin/codacy.js --token 1234 --commit 4321', function (err, res) {
                     if (err) {
                         return done(err);
                     }

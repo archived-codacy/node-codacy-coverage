@@ -1,7 +1,8 @@
-(function (Joi, chai, Q, util, logger) {
+(function (Joi, chai) {
     'use strict';
 
-    var expect = chai.expect;
+    var expect = chai.expect,
+        logger;
     chai.use(require('chai-as-promised'));
     chai.use(require('dirty-chai'));
     chai.config.includeStack = true;
@@ -10,6 +11,10 @@
         beforeEach(function () {
             process.env.CODACY_VERBOSE = '';
             process.env.CODACY_DEBUG = '';
+
+            delete require.cache[require.resolve('log-driver')];
+            delete require.cache[require.resolve('../lib/logger')];
+            logger = require('../lib/logger');
         });
         it('should be able to instantiate the logger without options', function () {
             var loggerImpl = logger();
@@ -51,8 +56,8 @@
             var loggerImpl = logger();
             expect(loggerImpl.level).to.equal('warn');
 
-            expect(require('log-driver').logger).to.be.ok();
-            expect(require('log-driver').logger.level).to.equal('warn');
+            expect(logger()).to.be.ok();
+            expect(logger().level).to.equal('warn');
         });
     });
-}(require('joi'), require('chai'), require('q'), require('util'), require('../lib/logger')));
+}(require('joi'), require('chai')));

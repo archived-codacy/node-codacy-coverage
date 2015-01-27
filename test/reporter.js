@@ -59,6 +59,11 @@
                 .sendCoverage('1234', '4321', sampleCoverageData))
                 .to.eventually.be.rejectedWith(Error, 'fileReports at position 0 fails because 3 must be larger than or equal to 1');
         });
+        it('shouldn\'t be able to create a reporter with invalid options', function () {
+            expect(function () {
+                reporter({endpoint: 1});
+            }).to.throw(Error, 'endpoint must be a string');
+        });
         it('should be able to use the reporter to send coverage data', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
                 .then(function () {
