@@ -15,7 +15,7 @@
                         total: 92,
                         fileReports: [
                             {
-                                filename: '/Users/david.pate/Git/codacy-coverage/lib/reporter.js',
+                                filename: 'codacy/lib/reporter.js',
                                 coverage: {
                                     1: 1,
                                     25: 1,

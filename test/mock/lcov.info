@@ -1,5 +1,5 @@
 TN:
-SF:/Users/david.pate/Git/codacy-coverage/lib/reporter.js
+SF:/Users/david.pate/Git/codacy/lib/reporter.js
 FN:1,(anonymous_1)
 FN:39,(anonymous_2)
 FN:51,sendCoverage
