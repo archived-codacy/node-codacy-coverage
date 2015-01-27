@@ -1,9 +1,13 @@
-# codacy
-Code Coverage reporter for Codacy
+# Codacy
+[Codacy](https://codacy.com/) support for Node.js. Get coverage reporting and code analysis for Node.js from Codacy.
 
 [![Build Status](https://travis-ci.org/DavidTPate/codacy.svg?branch=master)](https://travis-ci.org/DavidTPate/codacy)
-
-[Codacy](https://codacy.com/) support for Node.js. Get coverage reporting and code analysis for Node.js from Codacy.
+[![npm](https://img.shields.io/npm/v/codacy.svg)](https://www.npmjs.com/package/codacy)
+[![npm](https://img.shields.io/npm/dm/codacy.svg)](https://www.npmjs.com/package/codacy)
+[![Codacy](https://www.codacy.com/project/badge/d1bfdf020cc044bb8a2020d009378733)](https://www.codacy.com/public/davidtpate/codacy)
+[![David](https://img.shields.io/david/DavidTPate/codacy.svg)](https://david-dm.org/DavidTPate/codacy)
+[![David](https://img.shields.io/david/dev/DavidTPate/codacy.svg)](https://david-dm.org/DavidTPate/codacy)
+[![David](https://img.shields.io/david/peer/DavidTPate/codacy.svg)](https://david-dm.org/DavidTPate/codacy)
 
 ##Installation:
 Add the latest version of `codacy` to your package.json:
