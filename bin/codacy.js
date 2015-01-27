@@ -15,7 +15,7 @@
     });
 
     program
-        .version('0.0.7')
+        .version('0.1.0')
         .usage('[options]')
         .option('-f, --format [value]', 'Coverage input format')
         .option('-t, --token [value]', 'Set Token')
