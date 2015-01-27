@@ -8,7 +8,8 @@
 
     describe('Logger', function () {
         beforeEach(function() {
-            process.env = {};
+            process.env.CODACY_VERBOSE = '';
+            process.env.CODACY_DEBUG = '';
         });
         it('should be able to instantiate the logger without options', function () {
             var loggerImpl = logger();
