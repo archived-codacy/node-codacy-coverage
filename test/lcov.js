@@ -5,6 +5,7 @@
         lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString(),
         noStatsLcovData = fs.readFileSync(__dirname + '/mock/no-lines.info').toString(),
         nadaLcovData = fs.readFileSync(__dirname + '/mock/nada.info').toString();
+
     chai.use(require('chai-as-promised'));
     chai.use(require('dirty-chai'));
     chai.config.includeStack = true;
