@@ -86,7 +86,7 @@
                         return done(err);
                     }
 
-                    expect(res).to.match(/Error: Expected Successful Status Code, but got \[404\]/);
+                    expect(res).to.match(/Status Code \[400\] - Error \[{"error":"Unauthorized request"}\]/);
                     console.log(res);
                     //nock.done(); //TODO: Need to figure out how to use nock here. Since it's a separate process, it's not tied together.
                     done();

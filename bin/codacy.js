@@ -40,7 +40,13 @@
             commitId = program.commit,
             format = program.format || 'lcov';
 
+        if (!token) {
+            return logDriver.logger.error(new Error('Token is required'));
+        }
+
+        // Parse the coverage data for the given format and retrieve the commit id if we don't have it.
         return Q.all([lib.getParser(format).parse(input), getGitData.getCommitId(commitId)]).spread(function (parsedCoverage, commitId) {
+            // Now that we've parse the coverage data to the correct format, send it to Codacy.
             logDriver.logger.trace(parsedCoverage);
             lib.reporter({
                 endpoint: program.endpoint

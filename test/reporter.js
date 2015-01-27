@@ -7,7 +7,11 @@
     chai.config.includeStack = true;
 
     describe('Codacy Reporter', function () {
-        var bodyValidator = Joi.object({
+        var bodyValidator,
+            sampleCoverageData;
+
+        beforeEach(function () {
+            bodyValidator = Joi.object({
                 total: Joi.number().valid(50),
                 fileReports: Joi.array().includes(Joi.object({
                     filename: Joi.string().valid('filename'),
@@ -17,7 +21,8 @@
                         2: Joi.number().valid(3)
                     })
                 }))
-            }),
+            });
+
             sampleCoverageData = {
                 total: 50,
                 fileReports: [
@@ -31,6 +36,7 @@
                     }
                 ]
             };
+        });
 
         it('should be able to use the mock end-point', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
@@ -46,10 +52,17 @@
                         });
                 });
         });
+        it('shouldn\'t be able to send coverage with 0 hits on a line', function () {
+            sampleCoverageData.fileReports[0].coverage['3'] = 0;
+
+            return expect(reporter({})
+                .sendCoverage('1234', '4321', sampleCoverageData))
+                .to.eventually.be.rejectedWith(Error, 'fileReports at position 0 fails because 3 must be larger than or equal to 1');
+        });
         it('should be able to use the reporter to send coverage data', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
                 .then(function () {
-                    return expect(reporter({endpoint: 'https://www.codacy.com/api/coverage/:token/:commitId'})
+                    return expect(reporter({})
                         .sendCoverage('1234', '4321', sampleCoverageData))
                         .to.eventually.be.fulfilled;
                 });
@@ -57,7 +70,7 @@
         it('should receive error when non-200 status code', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator, 204)
                 .then(function () {
-                    return expect(reporter({endpoint: 'https://www.codacy.com/api/coverage/:token/:commitId'})
+                    return expect(reporter({})
                         .sendCoverage('1234', '4321', sampleCoverageData))
                         .to.eventually.be.rejectedWith(Error, 'Expected Status Code of 200, but got [204]');
                 });
@@ -65,7 +78,7 @@
         it('should receive error when 400 level status code', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator, 418)
                 .then(function () {
-                    return expect(reporter({endpoint: 'https://www.codacy.com/api/coverage/:token/:commitId'})
+                    return expect(reporter({})
                         .sendCoverage('1234', '4321', sampleCoverageData))
                         .to.eventually.be.rejectedWith(Error, 'Expected Successful Status Code, but got [418]');
                 });
