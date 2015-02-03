@@ -1,4 +1,7 @@
-# Codacy
+# Codacy [DEPRECATED]
+
+Renamed to [codacy-coverage](https://www.npmjs.com/package/codacy-coverage)
+
 [Codacy](https://codacy.com/) support for Node.js. Get coverage reporting and code analysis for Node.js from Codacy.
 
 [![Build Status](https://travis-ci.org/codacy/node-codacy-reporter.svg?branch=1.0.0)](https://travis-ci.org/codacy/node-codacy-reporter)
