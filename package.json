@@ -1,6 +1,6 @@
 {
-  "name": "codacy-reporter",
-  "version": "1.0.1",
+  "name": "codacy-coverage",
+  "version": "1.0.2",
   "description": "Code Coverage reporter for Codacy.com",
   "keywords": [
     "codacy",
@@ -8,13 +8,13 @@
     "code coverage",
     "codacy.com"
   ],
-  "homepage": "https://github.com/codacy/node-codacy-reporter",
+  "homepage": "https://github.com/codacy/node-codacy-coverage",
   "repository": {
     "type": "git",
-    "url": "git://github.com/codacy/node-codacy-reporter.git"
+    "url": "git://github.com/codacy/node-codacy-coverage.git"
   },
   "bugs": {
-    "url": "https://github.com/codacy/node-codacy-reporter/issues"
+    "url": "https://github.com/codacy/node-codacy-coverage/issues"
   },
   "author": {
     "name": "David Pate",
@@ -30,7 +30,7 @@
   ],
   "main": "index.js",
   "bin": {
-    "codacy-reporter": "./bin/codacy-reporter.js"
+    "codacy-coverage": "./bin/codacy-coverage.js"
   },
   "dependencies": {
     "commander": "^2.x",
