@@ -1,6 +1,6 @@
 {
   "name": "codacy-coverage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Code Coverage reporter for Codacy.com",
   "keywords": [
     "codacy",
