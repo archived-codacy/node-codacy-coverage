@@ -51,7 +51,7 @@
         it('should be able to get the commit id from Git', function () {
             // If we are currently running on Travis, we should be able to use the commit id environment variable
             // to check the git commit id method with actual git.
-            if (actualTravisCommit) {
+            if (actualTravisCommit && process.env.TRAVIS_PULL_REQUEST !== 'true') {
                 return expect(getGitData.getCommitId()).to.eventually.equal(actualTravisCommit);
             }
             return expect(getGitData.getCommitId()).to.eventually.be.fulfilled;
