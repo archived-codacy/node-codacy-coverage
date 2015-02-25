@@ -1,5 +1,7 @@
 # Codacy Coverage Reporter
+Credits to [David](https://github.com/DavidTPate) for creating this!
 [Codacy](https://codacy.com/) support for Node.js. Get coverage reporting and code analysis for Node.js from Codacy.
+
 
 [![Build Status](https://travis-ci.org/codacy/node-codacy-coverage.svg?branch=1.0.0)](https://travis-ci.org/codacy/node-codacy-coverage)
 [![npm](https://img.shields.io/npm/v/codacy-coverage.svg)](https://www.npmjs.com/package/codacy-coverage)
