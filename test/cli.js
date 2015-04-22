@@ -7,40 +7,6 @@
     chai.config.includeStack = true;
 
     describe('Command Line', function () {
-        it('should be able to get help with `-h`', function (done) {
-            exec('node ./bin/codacy-coverage.js -h', function (err, res) {
-                expect(res).to.equal('\n' +
-                    '  Usage: codacy-coverage [options]\n\n' +
-                    '  Options:\n\n' +
-                    '    -h, --help              output usage information\n' +
-                    '    -V, --version           output the version number\n' +
-                    '    -f, --format [value]    Coverage input format\n' +
-                    '    -t, --token [value]     Set Token\n' +
-                    '    -c, --commit [value]    Set Commit Id\n' +
-                    '    -e, --endpoint [value]  Set Endpoint\n' +
-                    '    -v, --verbose           Display verbose output\n' +
-                    '    -d, --debug             Display debug output\n\n'
-                );
-                done();
-            });
-        });
-        it('should be able to get help with `-help`', function (done) {
-            exec('node ./bin/codacy-coverage.js -help', function (err, res) {
-                expect(res).to.equal('\n' +
-                    '  Usage: codacy-coverage [options]\n\n' +
-                    '  Options:\n\n' +
-                    '    -h, --help              output usage information\n' +
-                    '    -V, --version           output the version number\n' +
-                    '    -f, --format [value]    Coverage input format\n' +
-                    '    -t, --token [value]     Set Token\n' +
-                    '    -c, --commit [value]    Set Commit Id\n' +
-                    '    -e, --endpoint [value]  Set Endpoint\n' +
-                    '    -v, --verbose           Display verbose output\n' +
-                    '    -d, --debug             Display debug output\n\n'
-                );
-                done();
-            });
-        });
         it('should be able to parse lcov data', function (done) {
             var bodyObject = {
                 total: 92,
