@@ -15,7 +15,7 @@
     });
 
     program
-        .version('1.0.4')
+        .version(require('../package').version)
         .usage('[options]')
         .option('-f, --format [value]', 'Coverage input format')
         .option('-t, --token [value]', 'Codacy Project API Token')
