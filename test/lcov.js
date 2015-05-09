@@ -1,7 +1,8 @@
 (function (Joi, chai, Q, fs, parser) {
     'use strict';
 
-    var expect = chai.expect,
+    var path = require('path'),
+        expect = chai.expect,
         lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString(),
         noStatsLcovData = fs.readFileSync(__dirname + '/mock/no-lines.info').toString(),
         nadaLcovData = fs.readFileSync(__dirname + '/mock/nada.info').toString();
@@ -18,7 +19,7 @@
                         total: 92,
                         fileReports: [
                             {
-                                filename: 'lib/reporter.js',
+                                filename: path.normalize('lib/reporter.js'),
                                 coverage: {
                                     1: 1,
                                     25: 1,
@@ -53,13 +54,13 @@
                 });
         });
         it('should be able to parse lcov data with path prefix', function () {
-            return expect(parser.getParser('lcov').parse('my-project/', lcovData))
+            return expect(parser.getParser('lcov').parse(path.normalize('my-project/'), lcovData))
                 .to.eventually.satisfy(function (data) {
                     expect(data).to.deep.equal({
                         total: 92,
                         fileReports: [
                             {
-                                filename: 'my-project/lib/reporter.js',
+                                filename: path.normalize('my-project/lib/reporter.js'),
                                 coverage: {
                                     1: 1,
                                     25: 1,
@@ -100,7 +101,7 @@
                         total: null,
                         fileReports: [
                             {
-                                filename: 'lib/reporter.js',
+                                filename: path.normalize('lib/reporter.js'),
                                 coverage: {},
                                 total: null
                             }
