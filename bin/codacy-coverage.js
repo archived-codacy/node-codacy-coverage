@@ -51,7 +51,12 @@
             debug: program.debug
         };
 
-        return lib.handleInput(input, opts);
+        return lib.handleInput(input, opts).then(function () {
+            loggerImpl.debug('Successfully sent coverage');
+        }, function (err) {
+            loggerImpl.error('Error sending coverage');
+            loggerImpl.error(err);
+        });
     });
 
 }(require('commander'), require('../lib/logger'), require('util'), require('../index')));
