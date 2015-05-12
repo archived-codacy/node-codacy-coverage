@@ -4,8 +4,8 @@
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
 
-    var input = '',
-        loggerImpl;
+    var input = '';
+    var loggerImpl;
 
     process.stdin.on('data', function (chunk) {
         input += chunk;
@@ -41,17 +41,7 @@
             return;
         }
 
-        var opts = {
-            endpoint: program.endpoint,
-            token: program.token,
-            commit: program.commit,
-            format: program.format,
-            pathPrefix: program.prefix,
-            verbose: program.verbose,
-            debug: program.debug
-        };
-
-        return lib.handleInput(input, opts).then(function () {
+        return lib.handleInput(input, program).then(function () {
             loggerImpl.debug('Successfully sent coverage');
         }, function (err) {
             loggerImpl.error('Error sending coverage');

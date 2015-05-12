@@ -1,8 +1,8 @@
 (function (helper) {
     'use strict';
 
-    var expect = helper.chai.expect,
-        logger;
+    var expect = helper.chai.expect;
+    var logger;
 
     describe('Logger', function () {
         beforeEach(function () {

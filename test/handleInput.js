@@ -3,10 +3,12 @@
 
     var expect = helper.chai.expect;
     var lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString();
+    var originalCodacyToken = process.env.CODACY_REPO_TOKEN;
 
     describe('Handle Input', function () {
         beforeEach(function () {
             helper.clearEnvironmentVariables();
+            process.env.CODACY_REPO_TOKEN = originalCodacyToken;
         });
         it('should be able to use the mock end-point', function () {
             var bodyValidator = Joi.object({
@@ -136,6 +138,7 @@
                 });
         });
         it('shouldn\'t be able to send coverage with invalid input', function () {
+            process.env.CODACY_REPO_TOKEN = '';
             return expect(handleInput()).to.eventually.be.rejectedWith(Error, 'Token is required');
         });
     });

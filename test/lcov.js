@@ -1,11 +1,10 @@
-(function (fs, parser, helper) {
+(function (fs, parser, helper, path) {
     'use strict';
 
-    var path = require('path'),
-        expect = helper.chai.expect,
-        lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString(),
-        noStatsLcovData = fs.readFileSync(__dirname + '/mock/no-lines.info').toString(),
-        nadaLcovData = fs.readFileSync(__dirname + '/mock/nada.info').toString();
+    var expect = helper.chai.expect;
+    var lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString();
+    var noStatsLcovData = fs.readFileSync(__dirname + '/mock/no-lines.info').toString();
+    var nadaLcovData = fs.readFileSync(__dirname + '/mock/nada.info').toString();
 
     describe('Lcov Parser', function () {
         it('should be able to parse lcov data', function () {
@@ -123,4 +122,4 @@
                 });
         });
     });
-}(require('fs'), require('../lib/coverageParser'), require('./helper')));
+}(require('fs'), require('../lib/coverageParser'), require('./helper'), require('path')));

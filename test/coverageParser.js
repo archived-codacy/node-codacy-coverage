@@ -1,8 +1,8 @@
 (function (util, parser, helper) {
     'use strict';
 
-    var expect = helper.chai.expect,
-        validFormats = ['lcov'];
+    var expect = helper.chai.expect;
+    var validFormats = ['lcov'];
 
     describe('Coverage Parser', function () {
         it('should receive an error when trying to use an unsupported format', function () {

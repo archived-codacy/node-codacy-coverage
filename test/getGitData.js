@@ -1,8 +1,8 @@
 (function (util, getGitData, helper) {
     'use strict';
 
-    var expect = helper.chai.expect,
-        actualTravisCommit = process.env.TRAVIS_COMMIT; // Store the commit id for the test, if we have it
+    var expect = helper.chai.expect;
+    var actualTravisCommit = process.env.TRAVIS_COMMIT; // Store the commit id for the test, if we have it
 
     describe('Get Git Data', function () {
         beforeEach(function () {
