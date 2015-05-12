@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-(function (program, logger, util, lib, getGitData, Q) {
+(function (program, logger, util, lib) {
     'use strict';
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
 
-    var input = '',
-        loggerImpl;
+    var input = '';
+    var loggerImpl;
 
     process.stdin.on('data', function (chunk) {
         input += chunk;
@@ -15,7 +15,7 @@
     });
 
     program
-        .version('1.0.4')
+        .version(require('../package').version)
         .usage('[options]')
         .option('-f, --format [value]', 'Coverage input format')
         .option('-t, --token [value]', 'Codacy Project API Token')
@@ -41,30 +41,12 @@
             return;
         }
 
-        var token = program.token || process.env.CODACY_REPO_TOKEN,
-            commitId = program.commit,
-            format = program.format || 'lcov',
-            pathPrefix = program.prefix || '';
-
-        if (!token) {
-            return loggerImpl.error(new Error('Token is required'));
-        }
-
-        // Parse the coverage data for the given format and retrieve the commit id if we don't have it.
-        return Q.all([lib.getParser(format).parse(pathPrefix, input), getGitData.getCommitId(commitId)]).spread(function (parsedCoverage, commitId) {
-            // Now that we've parse the coverage data to the correct format, send it to Codacy.
-            loggerImpl.trace(parsedCoverage);
-            lib.reporter({
-                endpoint: program.endpoint
-            }).sendCoverage(token, commitId, parsedCoverage).then(function () {
-                loggerImpl.debug('Successfully sent coverage');
-            }, function (err) {
-                loggerImpl.error('Error sending coverage');
-                loggerImpl.error(err);
-            });
+        return lib.handleInput(input, program).then(function () {
+            loggerImpl.debug('Successfully sent coverage');
         }, function (err) {
+            loggerImpl.error('Error sending coverage');
             loggerImpl.error(err);
         });
     });
 
-}(require('commander'), require('../lib/logger'), require('util'), require('../index'), require('../lib/getGitData'), require('q')));
+}(require('commander'), require('../lib/logger'), require('util'), require('../index')));

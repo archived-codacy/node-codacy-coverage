@@ -63,6 +63,9 @@ istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && c
 istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/codacy-coverage/bin/codacy-coverage.js && rm -rf ./coverage
 ```
 
+### [Grunt](http://gruntjs.com/)
+- Install & Configure [grunt-codacy](https://www.npmjs.com/package/grunt-codacy)
+
 ### [Poncho](https://github.com/deepsweet/poncho)
 Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomjs), [Mocha](https://github.com/visionmedia/mocha) and [Blanket](https://github.com/alex-seville/blanket):
 - [Configure](http://visionmedia.github.io/mocha/#browser-support) Mocha for browser

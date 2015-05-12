@@ -1,11 +1,8 @@
-(function (Joi, chai, Q, util, parser) {
+(function (util, parser, helper) {
     'use strict';
 
-    var expect = chai.expect,
-        validFormats = ['lcov'];
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
+    var expect = helper.chai.expect;
+    var validFormats = ['lcov'];
 
     describe('Coverage Parser', function () {
         it('should receive an error when trying to use an unsupported format', function () {
@@ -21,7 +18,7 @@
                 }).to.not.throw();
             });
             it('shouldn\'t be able to parse a blank coverage file for ' + format, function () {
-                return expect(parser.getParser(format).parse('')).to.eventually.be.rejectedWith(Error, 'value is required');
+                return expect(parser.getParser(format).parse('')).to.eventually.be.rejectedWith(Error, '"value" is required');
             });
             it('shouldn\'t be able to parse invalid coverage for ' + format, function () {
                 return expect(parser.getParser(format).parse('', 'There is no Dana, only Zuul')).to.eventually.be.rejectedWith(Error, 'Failed to parse string');
@@ -31,4 +28,4 @@
             });
         });
     });
-}(require('joi'), require('chai'), require('q'), require('util'), require('../lib/coverageParser')));
+}(require('util'), require('../lib/coverageParser'), require('./helper')));
