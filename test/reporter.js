@@ -10,7 +10,7 @@
         beforeEach(function () {
             bodyValidator = Joi.object({
                 total: Joi.number().valid(50),
-                fileReports: Joi.array().includes(Joi.object({
+                fileReports: Joi.array().items(Joi.object({
                     filename: Joi.string().valid('filename'),
                     total: Joi.number().valid(10),
                     coverage: Joi.object({
@@ -54,12 +54,12 @@
 
             return expect(reporter({})
                 .sendCoverage('1234', '4321', sampleCoverageData))
-                .to.eventually.be.rejectedWith(Error, 'fileReports at position 0 fails because 3 must be larger than or equal to 1');
+                .to.eventually.be.rejectedWith(Error, 'child "fileReports" fails because ["fileReports" does not contain 1 required value(s)]');
         });
         it('shouldn\'t be able to create a reporter with invalid options', function () {
             expect(function () {
                 reporter({endpoint: 1});
-            }).to.throw(Error, 'endpoint must be a string');
+            }).to.throw(Error, 'child "endpoint" fails because ["endpoint" must be a string]');
         });
         it('should be able to use the reporter to send coverage data', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
