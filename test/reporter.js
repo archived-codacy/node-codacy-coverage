@@ -57,7 +57,7 @@
                 .to.eventually.be.rejectedWith(Error, 'child "fileReports" fails because ["fileReports" does not contain 1 required value(s)]');
         });
         it('shouldn\'t be able to create a reporter with invalid options', function () {
-            expect(function () {
+            return expect(function () {
                 reporter({endpoint: 1});
             }).to.throw(Error, 'child "endpoint" fails because ["endpoint" must be a string]');
         });
@@ -66,7 +66,7 @@
                 .then(function () {
                     return expect(reporter({})
                         .sendCoverage('1234', '4321', sampleCoverageData))
-                        .to.eventually.be.fulfilled;
+                        .to.eventually.be.fulfilled();
                 });
         });
         it('should receive error when non-200 status code', function () {

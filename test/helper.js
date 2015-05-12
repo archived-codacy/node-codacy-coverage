@@ -27,6 +27,15 @@
 
     module.exports = {
         setupMockEndpoint: setupMockEndpoint,
-        chai: chai
+        chai: chai,
+        clearEnvironmentVariables: function () {
+            process.env.CODACY_GIT_COMMIT = '';
+            process.env.TRAVIS_COMMIT = '';
+            process.env.DRONE_COMMIT = '';
+            process.env.GIT_COMMIT = '';
+            process.env.CIRCLE_SHA1 = '';
+            process.env.CI_COMMIT_ID = '';
+            process.env.WERCKER_GIT_COMMIT = '';
+        }
     };
 }(require('nock'), require('chai'), require('bluebird')));

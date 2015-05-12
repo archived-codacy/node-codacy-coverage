@@ -6,13 +6,7 @@
 
     describe('Get Git Data', function () {
         beforeEach(function () {
-            process.env.CODACY_GIT_COMMIT = '';
-            process.env.TRAVIS_COMMIT = '';
-            process.env.DRONE_COMMIT = '';
-            process.env.GIT_COMMIT = '';
-            process.env.CIRCLE_SHA1 = '';
-            process.env.CI_COMMIT_ID = '';
-            process.env.WERCKER_GIT_COMMIT = '';
+            helper.clearEnvironmentVariables();
         });
         it('should be able to get the commit id when one is passed', function () {
             return expect(getGitData.getCommitId('1234')).to.eventually.equal('1234');
@@ -52,7 +46,7 @@
             if (actualTravisCommit && process.env.TRAVIS_PULL_REQUEST === 'false') {
                 return expect(getGitData.getCommitId()).to.eventually.equal(actualTravisCommit);
             }
-            return expect(getGitData.getCommitId()).to.eventually.be.fulfilled;
+            return expect(getGitData.getCommitId()).to.eventually.be.fulfilled();
         });
     });
 }(require('util'), require('../lib/getGitData'), require('./helper')));

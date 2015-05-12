@@ -44,7 +44,7 @@
         var opts = {
             endpoint: program.endpoint,
             token: program.token,
-            commitId: program.commit,
+            commit: program.commit,
             format: program.format,
             pathPrefix: program.prefix,
             verbose: program.verbose,
