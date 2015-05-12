@@ -1,15 +1,12 @@
-(function (chai, handleInput) {
+(function (handleInput, helper) {
     'use strict';
 
-    var expect = chai.expect;
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
+    var expect = helper.chai.expect;
 
     describe('Handle Input', function () {
         it('should return a promise', function () {
-            return expect(handleInput()).to.eventually.be.rejected;
+            return expect(handleInput()).to.eventually.be.rejected();
         });
     });
 
-}(require('chai'), require('../lib/handleInput')));
+}(require('../lib/handleInput'), require('./helper')));

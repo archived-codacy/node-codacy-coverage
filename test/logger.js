@@ -1,11 +1,8 @@
-(function (Joi, chai) {
+(function (helper) {
     'use strict';
 
-    var expect = chai.expect,
+    var expect = helper.chai.expect,
         logger;
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
 
     describe('Logger', function () {
         beforeEach(function () {
@@ -60,4 +57,4 @@
             expect(logger().level).to.equal('warn');
         });
     });
-}(require('joi'), require('chai')));
+}(require('./helper')));

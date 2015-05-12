@@ -1,15 +1,11 @@
-(function (Joi, chai, Q, fs, parser) {
+(function (fs, parser, helper) {
     'use strict';
 
     var path = require('path'),
-        expect = chai.expect,
+        expect = helper.chai.expect,
         lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString(),
         noStatsLcovData = fs.readFileSync(__dirname + '/mock/no-lines.info').toString(),
         nadaLcovData = fs.readFileSync(__dirname + '/mock/nada.info').toString();
-
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
 
     describe('Lcov Parser', function () {
         it('should be able to parse lcov data', function () {
@@ -127,4 +123,4 @@
                 });
         });
     });
-}(require('joi'), require('chai'), require('q'), require('fs'), require('../lib/coverageParser')));
+}(require('fs'), require('../lib/coverageParser'), require('./helper')));

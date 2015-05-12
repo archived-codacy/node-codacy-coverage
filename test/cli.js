@@ -1,10 +1,7 @@
-(function (chai, Q, exec, Joi, parser, helper) {
+(function (exec, Joi, parser, helper) {
     'use strict';
 
-    var expect = chai.expect;
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
+    var expect = helper.chai.expect;
 
     describe('Command Line', function () {
         it('should be able to parse lcov data', function (done) {
@@ -60,4 +57,4 @@
             });
         });
     });
-}(require('chai'), require('q'), require('child_process').exec, require('joi'), require('../'), require('./helper')));
+}(require('child_process').exec, require('joi'), require('../'), require('./helper')));

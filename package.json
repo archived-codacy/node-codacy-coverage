@@ -33,11 +33,11 @@
     "codacy-coverage": "./bin/codacy-coverage.js"
   },
   "dependencies": {
+    "bluebird": "^2.9.25",
     "commander": "^2.x",
     "joi": "^5.x",
     "lcov-parse": "0.x",
     "log-driver": "^1.x",
-    "q": "^1.x",
     "request-promise": "^0.x"
   },
   "devDependencies": {
