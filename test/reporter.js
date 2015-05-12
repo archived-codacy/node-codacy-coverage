@@ -1,10 +1,7 @@
-(function (Joi, request, chai, Q, reporter, helper) {
+(function (Joi, request, reporter, helper) {
     'use strict';
 
-    var expect = chai.expect;
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
+    var expect = helper.chai.expect;
 
     describe('Codacy Reporter', function () {
         var bodyValidator,
@@ -90,4 +87,4 @@
         });
     });
 
-}(require('joi'), require('request-promise'), require('chai'), require('q'), require('../lib/reporter'), require('./helper')));
+}(require('joi'), require('request-promise'), require('../lib/reporter'), require('./helper')));

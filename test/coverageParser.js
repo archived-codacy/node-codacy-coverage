@@ -1,11 +1,8 @@
-(function (Joi, chai, Q, util, parser) {
+(function (util, parser, helper) {
     'use strict';
 
-    var expect = chai.expect,
+    var expect = helper.chai.expect,
         validFormats = ['lcov'];
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
 
     describe('Coverage Parser', function () {
         it('should receive an error when trying to use an unsupported format', function () {
@@ -31,4 +28,4 @@
             });
         });
     });
-}(require('joi'), require('chai'), require('q'), require('util'), require('../lib/coverageParser')));
+}(require('util'), require('../lib/coverageParser'), require('./helper')));

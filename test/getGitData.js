@@ -1,11 +1,8 @@
-(function (Joi, chai, Q, util, getGitData) {
+(function (util, getGitData, helper) {
     'use strict';
 
-    var expect = chai.expect,
+    var expect = helper.chai.expect,
         actualTravisCommit = process.env.TRAVIS_COMMIT; // Store the commit id for the test, if we have it
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
 
     describe('Get Git Data', function () {
         beforeEach(function () {
@@ -58,4 +55,4 @@
             return expect(getGitData.getCommitId()).to.eventually.be.fulfilled;
         });
     });
-}(require('joi'), require('chai'), require('q'), require('util'), require('../lib/getGitData')));
+}(require('util'), require('../lib/getGitData'), require('./helper')));
