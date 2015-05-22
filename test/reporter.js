@@ -39,7 +39,7 @@
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
                 .then(function () {
                     return expect(request({
-                        url: 'https://www.codacy.com/api/coverage/1234/4321',
+                        url: 'https://www.codacy.com/api/2.0/coverage/4321/javascript',
                         method: 'POST',
                         json: sampleCoverageData,
                         resolveWithFullResponse: true
