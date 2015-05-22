@@ -93,12 +93,12 @@
             return expect(parser.getParser('lcov').parse('', noStatsLcovData))
                 .to.eventually.satisfy(function (data) {
                     expect(JSON.stringify(data)).to.equal(JSON.stringify({
-                        total: null,
+                        total: 0,
                         fileReports: [
                             {
                                 filename: path.normalize('lib/reporter.js'),
                                 coverage: {},
-                                total: null
+                                total: 0
                             }
                         ]
                     }));
@@ -109,12 +109,12 @@
             return expect(parser.getParser('lcov').parse('', nadaLcovData))
                 .to.eventually.satisfy(function (data) {
                     expect(JSON.stringify(data)).to.equal(JSON.stringify({
-                        total: null,
+                        total: 0,
                         fileReports: [
                             {
                                 filename: '',
                                 coverage: {},
-                                total: null
+                                total: 0
                             }
                         ]
                     }));
