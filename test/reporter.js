@@ -1,10 +1,7 @@
-(function (Joi, request, chai, Q, reporter, helper) {
+(function (Joi, request, reporter, helper) {
     'use strict';
 
-    var expect = chai.expect;
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
+    var expect = helper.chai.expect;
 
     describe('Codacy Reporter', function () {
         var bodyValidator,
@@ -13,7 +10,7 @@
         beforeEach(function () {
             bodyValidator = Joi.object({
                 total: Joi.number().valid(50),
-                fileReports: Joi.array().includes(Joi.object({
+                fileReports: Joi.array().items(Joi.object({
                     filename: Joi.string().valid('filename'),
                     total: Joi.number().valid(10),
                     coverage: Joi.object({
@@ -57,19 +54,19 @@
 
             return expect(reporter({})
                 .sendCoverage('1234', '4321', sampleCoverageData))
-                .to.eventually.be.rejectedWith(Error, 'fileReports at position 0 fails because 3 must be larger than or equal to 1');
+                .to.eventually.be.rejectedWith(Error, 'child "fileReports" fails because ["fileReports" does not contain 1 required value(s)]');
         });
         it('shouldn\'t be able to create a reporter with invalid options', function () {
-            expect(function () {
+            return expect(function () {
                 reporter({endpoint: 1});
-            }).to.throw(Error, 'endpoint must be a string');
+            }).to.throw(Error, 'child "endpoint" fails because ["endpoint" must be a string]');
         });
         it('should be able to use the reporter to send coverage data', function () {
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
                 .then(function () {
                     return expect(reporter({})
                         .sendCoverage('1234', '4321', sampleCoverageData))
-                        .to.eventually.be.fulfilled;
+                        .to.eventually.be.fulfilled();
                 });
         });
         it('should receive error when non-200 status code', function () {
@@ -90,4 +87,4 @@
         });
     });
 
-}(require('joi'), require('request-promise'), require('chai'), require('q'), require('../lib/reporter'), require('./helper')));
+}(require('joi'), require('request-promise'), require('../lib/reporter'), require('./helper')));

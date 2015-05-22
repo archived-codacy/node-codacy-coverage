@@ -1,14 +1,10 @@
-(function (Joi, chai, Q, fs, parser) {
+(function (fs, parser, helper, path) {
     'use strict';
 
-    var expect = chai.expect,
-        lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString(),
-        noStatsLcovData = fs.readFileSync(__dirname + '/mock/no-lines.info').toString(),
-        nadaLcovData = fs.readFileSync(__dirname + '/mock/nada.info').toString();
-
-    chai.use(require('chai-as-promised'));
-    chai.use(require('dirty-chai'));
-    chai.config.includeStack = true;
+    var expect = helper.chai.expect;
+    var lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString();
+    var noStatsLcovData = fs.readFileSync(__dirname + '/mock/no-lines.info').toString();
+    var nadaLcovData = fs.readFileSync(__dirname + '/mock/nada.info').toString();
 
     describe('Lcov Parser', function () {
         it('should be able to parse lcov data', function () {
@@ -18,7 +14,7 @@
                         total: 92,
                         fileReports: [
                             {
-                                filename: 'lib/reporter.js',
+                                filename: path.normalize('lib/reporter.js'),
                                 coverage: {
                                     1: 1,
                                     25: 1,
@@ -53,13 +49,13 @@
                 });
         });
         it('should be able to parse lcov data with path prefix', function () {
-            return expect(parser.getParser('lcov').parse('my-project/', lcovData))
+            return expect(parser.getParser('lcov').parse(path.normalize('my-project/'), lcovData))
                 .to.eventually.satisfy(function (data) {
                     expect(data).to.deep.equal({
                         total: 92,
                         fileReports: [
                             {
-                                filename: 'my-project/lib/reporter.js',
+                                filename: path.normalize('my-project/lib/reporter.js'),
                                 coverage: {
                                     1: 1,
                                     25: 1,
@@ -97,12 +93,12 @@
             return expect(parser.getParser('lcov').parse('', noStatsLcovData))
                 .to.eventually.satisfy(function (data) {
                     expect(JSON.stringify(data)).to.equal(JSON.stringify({
-                        total: null,
+                        total: 0,
                         fileReports: [
                             {
-                                filename: 'lib/reporter.js',
+                                filename: path.normalize('lib/reporter.js'),
                                 coverage: {},
-                                total: null
+                                total: 0
                             }
                         ]
                     }));
@@ -113,12 +109,12 @@
             return expect(parser.getParser('lcov').parse('', nadaLcovData))
                 .to.eventually.satisfy(function (data) {
                     expect(JSON.stringify(data)).to.equal(JSON.stringify({
-                        total: null,
+                        total: 0,
                         fileReports: [
                             {
                                 filename: '',
                                 coverage: {},
-                                total: null
+                                total: 0
                             }
                         ]
                     }));
@@ -126,4 +122,4 @@
                 });
         });
     });
-}(require('joi'), require('chai'), require('q'), require('fs'), require('../lib/coverageParser')));
+}(require('fs'), require('../lib/coverageParser'), require('./helper'), require('path')));

@@ -1,4 +1,4 @@
-(function (nock, chai, Q) {
+(function (nock, chai, Promise) {
     'use strict';
 
     var expect = chai.expect;
@@ -11,27 +11,31 @@
 
     //Setup mock for the Codacy API endpoint.
     function setupMockEndpoint(token, commitId, bodyValidator, statusCode) {
-        var deferred = Q.defer();
-        process.nextTick(function () {
-            try {
-                expect(token).to.be.ok();
-                expect(commitId).to.be.ok();
-                expect(bodyValidator).to.be.ok();
+        return new Promise(function (resolve) {
+            expect(token).to.be.ok();
+            expect(commitId).to.be.ok();
+            expect(bodyValidator).to.be.ok();
 
-                return deferred.resolve(nock('https://www.codacy.com')
-                    .post('/api/coverage/' + token + '/' + commitId, function (body) {
-                        var result = bodyValidator.validate(body);
-                        return result.error ? false : true;
-                    })
-                    .reply(statusCode || 200));
-            } catch (err) {
-                deferred.reject(err);
-            }
+            return resolve(nock('https://www.codacy.com')
+                .post('/api/coverage/' + token + '/' + commitId, function (body) {
+                    var result = bodyValidator.validate(body);
+                    return result.error ? false : true;
+                })
+                .reply(statusCode || 200));
         });
-        return deferred.promise;
     }
 
     module.exports = {
-        setupMockEndpoint: setupMockEndpoint
+        setupMockEndpoint: setupMockEndpoint,
+        chai: chai,
+        clearEnvironmentVariables: function () {
+            process.env.CODACY_GIT_COMMIT = '';
+            process.env.TRAVIS_COMMIT = '';
+            process.env.DRONE_COMMIT = '';
+            process.env.GIT_COMMIT = '';
+            process.env.CIRCLE_SHA1 = '';
+            process.env.CI_COMMIT_ID = '';
+            process.env.WERCKER_GIT_COMMIT = '';
+        }
     };
-}(require('nock'), require('chai'), require('q')));
+}(require('nock'), require('chai'), require('bluebird')));
