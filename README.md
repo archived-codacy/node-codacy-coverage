@@ -26,7 +26,7 @@ npm install mocha-lcov-reporter --save
 
 This script ( `bin/codacy-coverage.js` ) can take standard input from any tool that emits the lcov data format (including [mocha](http://visionmedia.github.com/mocha/)'s [LCov reporter](https://npmjs.org/package/mocha-lcov-reporter)) and send it to Codacy to report your code coverage there.
 
-Once your app is instrumented for coverage, and building, you need to pipe the lcov output to `./node_modules/codacy-coverage/bin/codacy-coverage.js`.
+Once your app is instrumented for coverage, and building, you need to pipe the lcov output to `./node_modules/.bin/codacy-coverage`.
 
 You'll need to provide the Report token from Codacy via an environment variable:
 * CODACY_PROJECT_TOKEN (the secret repo token from Codacy.com)
@@ -39,7 +39,7 @@ You'll need to provide the Report token from Codacy via an environment variable:
 ```sh
 NODE_ENV=test YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha \
   --require blanket \
-  --reporter mocha-lcov-reporter |  ./node_modules/codacy-coverage/bin/codacy-coverage.js
+  --reporter mocha-lcov-reporter | ./node_modules/.bin/codacy-coverage
 ```
 ### [Mocha](http://visionmedia.github.io/mocha/) + [JSCoverage](https://github.com/fishbar/jscoverage)
 
@@ -47,20 +47,20 @@ Instrumenting your app for coverage is probably harder than it needs to be (read
 
 In mocha, if you've got your code instrumented for coverage, the command for a travis build would look something like this:
 ```sh
-YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter | ./node_modules/codacy-coverage/bin/codacy-coverage.js
+YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter | ./node_modules/.bin/codacy-coverage
 ```
 ### [Istanbul](https://github.com/gotwarlost/istanbul)
 
 **With Mocha:**
 
 ```sh
-istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/codacy-coverage/bin/codacy-coverage.js && rm -rf ./coverage
+istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage
 ```
 
 **With Jasmine:**
 
 ```sh
-istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/codacy-coverage/bin/codacy-coverage.js && rm -rf ./coverage
+istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage
 ```
 
 ### [Grunt](http://gruntjs.com/)
@@ -73,7 +73,7 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 - Run your tests with a command like this:
 
 ```sh
-./node_modules/.bin/poncho -R lcov test/test.html | ./node_modules/codacy-coverage/bin/codacy-coverage.js
+./node_modules/.bin/poncho -R lcov test/test.html | ./node_modules/.bin/codacy-coverage
 ```
 
 ## License
