@@ -29,7 +29,7 @@ This script ( `bin/codacy-coverage.js` ) can take standard input from any tool t
 Once your app is instrumented for coverage, and building, you need to pipe the lcov output to `./node_modules/codacy-coverage/bin/codacy-coverage.js`.
 
 You'll need to provide the Report token from Codacy via an environment variable:
-* CODACY_REPO_TOKEN (the secret repo token from Codacy.com)
+* CODACY_PROJECT_TOKEN (the secret repo token from Codacy.com)
 
 ### [Mocha](http://visionmedia.github.io/mocha/) + [Blanket.js](https://github.com/alex-seville/blanket)
 - Install [blanket.js](http://blanketjs.org/)
