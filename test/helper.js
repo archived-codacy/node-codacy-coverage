@@ -16,8 +16,8 @@
             expect(commitId).to.be.ok();
             expect(bodyValidator).to.be.ok();
 
-            return resolve(nock('https://www.codacy.com')
-                .post('/api/2.0/coverage/' + commitId + '/javascript', function (body) {
+            return resolve(nock('https://api.codacy.com')
+                .post('/2.0/coverage/' + commitId + '/javascript', function (body) {
                     var result = bodyValidator.validate(body);
                     return result.error ? false : true;
                 })
