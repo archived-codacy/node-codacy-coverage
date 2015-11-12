@@ -1,3 +1,9 @@
 machine:
   node:
-    version: 4.1.0
+    version: 0.12.0
+    
+test:
+  override:
+    - npm test
+  post:
+    - chmod +x ./bin/codacy-coverage.js && cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
