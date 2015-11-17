@@ -41,19 +41,19 @@
     "request-promise": "^0.x"
   },
   "devDependencies": {
-    "buddy.js": "^0.x",
+    "buddy.js": "~0.x",
     "chai": "^2.3.x",
     "chai-as-promised": "^5.0.x",
     "dirty-chai": "^1.x",
-    "nsp": "^1.x",
+    "nsp": "^2.0.x",
     "mocha": "^2.x",
     "nock": "^2.0.x",
-    "istanbul": "^0.x",
+    "istanbul": "~0.x",
     "jscs": "^1.x",
     "jshint": "^2.x",
-    "jsinspect": "^0.x"
+    "jsinspect": "~0.x"
   },
   "scripts": {
-    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && jshint --show-non-errors . && jscs . && buddy index.js lib test && nsp audit-package"
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && jshint --show-non-errors . && jscs . && buddy index.js lib test && nsp check"
   }
 }

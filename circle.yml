@@ -1,0 +1,9 @@
+test:
+  override:
+    - nvm install 0.10.33 && npm test
+    - nvm install 0.11.14 && npm test
+    - nvm install 0.12.0 && npm test
+    - nvm install 4.0.0 && npm test
+  post:
+    - chmod +x ./bin/codacy-coverage.js && cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
+    
