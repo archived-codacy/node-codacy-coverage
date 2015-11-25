@@ -77,5 +77,8 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 ./node_modules/.bin/poncho -R lcov test/test.html | ./node_modules/.bin/codacy-coverage
 ```
 
+### [gulp](http://gulpjs.com/)
+- Install & Configure [gulp-codacy](https://www.npmjs.com/package/gulp-codacy)
+
 ## License
 [MIT](LICENSE)
