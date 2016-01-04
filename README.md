@@ -32,6 +32,8 @@ Once your app is instrumented for coverage, and building, you need to pipe the l
 You'll need to provide the Report token from Codacy via an environment variable:
 * CODACY_PROJECT_TOKEN (the secret repo token from Codacy.com)
 
+> Note: You should keep your API token well **protected**, as it grants owner permissions to your projects.
+
 ### [Mocha](http://mochajs.org) + [Blanket.js](https://github.com/alex-seville/blanket)
 - Install [blanket.js](http://blanketjs.org/)
 - Configure blanket according to [docs](https://github.com/alex-seville/blanket/blob/master/docs/getting_started_node.md).
