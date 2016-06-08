@@ -22,12 +22,7 @@
     "url": "https://github.com/DavidTPate"
   },
   "contributors": [],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
-    }
-  ],
+  "license": "MIT",
   "main": "index.js",
   "bin": {
     "codacy-coverage": "./bin/codacy-coverage.js"
