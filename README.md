@@ -82,5 +82,12 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 ### [gulp](http://gulpjs.com/)
 - Install & Configure [gulp-codacy](https://www.npmjs.com/package/gulp-codacy)
 
+### Troubleshooting
+
+The paths in your coverage file should be relative, if you are having problems with absolute paths, you can run our plugin with `-p .` to strip the current path from the paths in your coverage file:
+```
+cat ./coverage/lcov.info | node_modules/.bin/codacy-coverage -p .
+```
+
 ## License
 [MIT](LICENSE)
