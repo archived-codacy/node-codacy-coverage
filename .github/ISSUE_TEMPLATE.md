@@ -16,7 +16,6 @@ Use `uname -a` if on Linux.
 
 ### Testing framework
 
-Paste the output from `java -version` at the command line.
 
 ### Library Dependencies
 
