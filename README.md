@@ -34,6 +34,13 @@ You'll need to provide the Report token from Codacy via an environment variable:
 
 > Note: You should keep your API token well **protected**, as it grants owner permissions to your projects.
 
+**Enterprise**
+
+To send coverage in the enterprise version you should:
+```
+export CODACY_API_BASE_URL=<Codacy_instance_URL>:16006
+```
+
 ### [Mocha](http://mochajs.org) + [Blanket.js](https://github.com/alex-seville/blanket)
 - Install [blanket.js](http://blanketjs.org/)
 - Configure blanket according to [docs](https://github.com/alex-seville/blanket/blob/master/docs/getting_started_node.md).
