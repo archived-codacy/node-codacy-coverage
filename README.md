@@ -36,9 +36,9 @@ You'll need to provide the Report token from Codacy via an environment variable:
 
 **Enterprise**
 
-To send coverage in the enterprise version you should:
+To send coverage in the enterprise version you should specify your Codacy installation URL:
 ```
-export CODACY_API_BASE_URL=<Codacy_instance_URL>:16006
+codacy-coverage -e <YOUR-URL>:16006
 ```
 
 ### [Mocha](http://mochajs.org) + [Blanket.js](https://github.com/alex-seville/blanket)
@@ -94,6 +94,11 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 The paths in your coverage file should be relative, if you are having problems with absolute paths, you can run our plugin with `-p .` to strip the current path from the paths in your coverage file:
 ```
 cat ./coverage/lcov.info | node_modules/.bin/codacy-coverage -p .
+```
+
+To send coverage in the <strong>enterprise</strong> version you should specify your Codacy installation URL followed by the port 16006 using the -e option, example:
+```
+cat ./coverage/lcov.info | node_modules/.bin/codacy-coverage -e <YOUR-URL>:16006
 ```
 
 ## License
