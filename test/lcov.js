@@ -49,7 +49,7 @@
                 });
         });
         it('should be able to parse lcov data with path prefix', function () {
-            return expect(parser.getParser('lcov').parse(path.normalize('my-project/'), lcovData))
+            return expect(parser.getParser('lcov').parse(path.normalize('my-project' + path.sep), lcovData))
                 .to.eventually.satisfy(function (data) {
                     expect(data).to.deep.equal({
                         total: 92,
