@@ -53,7 +53,7 @@
             sampleCoverageData.fileReports[0].coverage['3'] = 0;
 
             return expect(reporter({})
-                .sendCoverage('1234', '4321', sampleCoverageData))
+                .sendCoverage('1234', '4321', 'javascript', sampleCoverageData))
                 .to.eventually.be.rejectedWith(Error, 'child "fileReports" fails because ["fileReports" does not contain 1 required value(s)]');
         });
         it('shouldn\'t be able to create a reporter with invalid options', function () {
@@ -65,7 +65,7 @@
             return helper.setupMockEndpoint('1234', '4321', bodyValidator)
                 .then(function () {
                     return expect(reporter({})
-                        .sendCoverage('1234', '4321', sampleCoverageData))
+                        .sendCoverage('1234', '4321', 'javascript', sampleCoverageData))
                         .to.eventually.be.fulfilled();
                 });
         });
@@ -73,7 +73,7 @@
             return helper.setupMockEndpoint('1234', '4321', bodyValidator, 204)
                 .then(function () {
                     return expect(reporter({})
-                        .sendCoverage('1234', '4321', sampleCoverageData))
+                        .sendCoverage('1234', '4321', 'javascript', sampleCoverageData))
                         .to.eventually.be.rejectedWith(Error, 'Expected Status Code of 200, but got [204]');
                 });
         });
@@ -81,7 +81,7 @@
             return helper.setupMockEndpoint('1234', '4321', bodyValidator, 418)
                 .then(function () {
                     return expect(reporter({})
-                        .sendCoverage('1234', '4321', sampleCoverageData))
+                        .sendCoverage('1234', '4321', 'javascript', sampleCoverageData))
                         .to.eventually.be.rejectedWith(Error, 'Expected Successful Status Code, but got [418]');
                 });
         });
