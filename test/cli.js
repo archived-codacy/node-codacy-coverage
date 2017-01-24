@@ -61,8 +61,8 @@
                     return done(err);
                 }
 
-                expect(res).to.match(/Started with: token \["1234"], commitId \["4321"], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
-                expect(res).to.match(/Handling input for: token \["1234"], commitId \["4321"], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
+                expect(res).to.match(/Started with: token \["1234"], commitId \["4321"], language \[undefined], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
+                expect(res).to.match(/Handling input for: token \["1234"], commitId \["4321"], language \["javascript"], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
                 done();
             });
         });
