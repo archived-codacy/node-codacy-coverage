@@ -44,11 +44,11 @@
     "mocha": "^2.x",
     "nock": "^2.0.x",
     "istanbul": "~0.x",
-    "jscs": "^1.x",
-    "jshint": "^2.x",
-    "jsinspect": "~0.x"
+    "jsinspect": "~0.x",
+    "eslint": "^3.x"
   },
   "scripts": {
-    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && jshint --show-non-errors . && jscs . && buddy index.js lib test && nsp check"
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && eslint . && buddy index.js lib test && nsp check",
+    "test-only": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && buddy index.js lib test && nsp check"
   }
 }

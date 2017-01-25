@@ -44,9 +44,9 @@
                         json: sampleCoverageData,
                         resolveWithFullResponse: true
                     }).promise()).to.eventually.satisfy(function (res) {
-                            expect(res.statusCode).to.equal(200);
-                            return true;
-                        });
+                        expect(res.statusCode).to.equal(200);
+                        return true;
+                    });
                 });
         });
         it('shouldn\'t be able to send coverage with 0 hits on a line', function () {
