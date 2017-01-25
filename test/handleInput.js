@@ -133,7 +133,7 @@
                     return expect(handleInput(lcovData, {
                         token: '1234',
                         commit: '4321',
-                        prefix: 'my-project/'
+                        prefix: 'my-project' + path.sep
                     })).to.eventually.be.fulfilled();
                 });
         });
