@@ -89,6 +89,11 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 ### [gulp](http://gulpjs.com/)
 - Install & Configure [gulp-codacy](https://www.npmjs.com/package/gulp-codacy)
 
+### Custom Language (Typescript, Coffeescript)
+
+- Pass an extra parameter to the codacy-coverage reporter `--language typescript` or `--language coffeescript`.
+- If you have multiple language you need to invoke the reporter once for each of them.
+
 ### Troubleshooting
 
 The paths in your coverage file should be relative, if you are having problems with absolute paths, you can run our plugin with `-p .` to strip the current path from the paths in your coverage file:
