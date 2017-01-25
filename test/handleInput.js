@@ -45,9 +45,9 @@
                         json: sampleCoverageData,
                         resolveWithFullResponse: true
                     }).promise()).to.eventually.satisfy(function (res) {
-                            expect(res.statusCode).to.equal(200);
-                            return true;
-                        });
+                        expect(res.statusCode).to.equal(200);
+                        return true;
+                    });
                 });
         });
         it('should be able to parse lcov data', function () {

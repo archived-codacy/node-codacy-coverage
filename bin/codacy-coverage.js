@@ -20,6 +20,7 @@
         .option('-f, --format [value]', 'Coverage input format')
         .option('-t, --token [value]', 'Codacy Project API Token')
         .option('-c, --commit [value]', 'Commit SHA hash')
+        .option('-l, --language [value', 'Project Language')
         .option('-e, --endpoint [value]', 'Codacy API Endpoint')
         .option('-p, --prefix [value]', 'Project path prefix')
         .option('-v, --verbose', 'Display verbose output')
@@ -31,8 +32,8 @@
         debug: program.debug
     });
 
-    loggerImpl.info(util.format('Started with: token [%j], commitId [%j], endpoint [%j], format [%j], path prefix [%j], verbose [%j], debug [%j]',
-        program.token, program.commit, program.endpoint, program.format, program.prefix, program.verbose, program.debug));
+    loggerImpl.info(util.format('Started with: token [%j], commitId [%j], language [%j], endpoint [%j], format [%j], path prefix [%j], verbose [%j], debug [%j]',
+        program.token, program.commit, program.language, program.endpoint, program.format, program.prefix, program.verbose, program.debug));
 
     process.stdin.on('end', function () {
         loggerImpl.trace('Received file through stdin');
