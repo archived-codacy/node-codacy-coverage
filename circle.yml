@@ -9,3 +9,13 @@ test:
     - nvm install 7.4.0 && npm run test
   post:
     - chmod +x ./bin/codacy-coverage.js && cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
+
+deployment:
+  npm:
+    branch: master
+    commands:
+      - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+      - npm version minor -m "Release version %s"
+      - git push --tags
+      - git push
+      - npm publish
