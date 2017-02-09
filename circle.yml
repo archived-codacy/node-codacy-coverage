@@ -14,7 +14,7 @@ deployment:
   npm:
     branch: master
     commands:
-      - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+      - echo -e "_auth = $NPM_TOKEN\nemail = $NPM_EMAIL" > .npmrc
       - npm version minor -m "Release version %s"
       - git push --tags
       - git push
