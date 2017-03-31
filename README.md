@@ -12,7 +12,7 @@ Credits to [David](https://github.com/DavidTPate) for creating this!
 [![David](https://img.shields.io/david/dev/codacy/node-codacy-coverage.svg)](https://david-dm.org/codacy/node-codacy-coverage)
 [![David](https://img.shields.io/david/peer/codacy/node-codacy-coverage.svg)](https://david-dm.org/codacy/node-codacy-coverage)
 
-##Installation:
+## Installation:
 Add the latest version of `codacy-coverage` to your package.json:
 ```
 npm install codacy-coverage --save
@@ -23,7 +23,7 @@ If you're using mocha, add `mocha-lcov-reporter` to your package.json:
 npm install mocha-lcov-reporter --save
 ```
 
-##Usage:
+## Usage:
 
 This script ( `bin/codacy-coverage.js` ) can take standard input from any tool that emits the lcov data format (including [mocha](http://mochajs.org)'s [LCov reporter](https://npmjs.org/package/mocha-lcov-reporter)) and send it to Codacy to report your code coverage there.
 
