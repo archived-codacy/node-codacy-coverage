@@ -32,6 +32,7 @@
     "commander": "^2.x",
     "joi": "^6.4.x",
     "lcov-parse": "0.x",
+    "lodash": "^4.17.4",
     "log-driver": "^1.x",
     "request-promise": "^0.x"
   },
