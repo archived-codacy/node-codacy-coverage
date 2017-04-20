@@ -4,7 +4,6 @@
     var expect = helper.chai.expect;
     var lcovData = fs.readFileSync(__dirname + '/mock/lcov.info').toString();
     var noStatsLcovData = fs.readFileSync(__dirname + '/mock/no-lines.info').toString();
-    var nadaLcovData = fs.readFileSync(__dirname + '/mock/nada.info').toString();
 
     describe('Lcov Parser', function () {
         it('should be able to parse lcov data', function () {
@@ -97,22 +96,6 @@
                         fileReports: [
                             {
                                 filename: path.normalize('lib/reporter.js'),
-                                coverage: {},
-                                total: 0
-                            }
-                        ]
-                    }));
-                    return true;
-                });
-        });
-        it('should be able to parse lcov data without anything', function () {
-            return expect(parser.getParser('lcov').parse('', nadaLcovData))
-                .to.eventually.satisfy(function (data) {
-                    expect(JSON.stringify(data)).to.equal(JSON.stringify({
-                        total: 0,
-                        fileReports: [
-                            {
-                                filename: '',
                                 coverage: {},
                                 total: 0
                             }

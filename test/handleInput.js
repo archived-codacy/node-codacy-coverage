@@ -14,7 +14,7 @@
             var bodyValidator = Joi.object({
                 total: Joi.number().valid(50),
                 fileReports: Joi.array().items(Joi.object({
-                    filename: Joi.string().valid('filename'),
+                    filename: Joi.string().valid('filename.js'),
                     total: Joi.number().valid(10),
                     coverage: Joi.object({
                         1: Joi.number().valid(1),
@@ -27,7 +27,7 @@
                 total: 50,
                 fileReports: [
                     {
-                        filename: 'filename',
+                        filename: 'filename.js',
                         total: 10,
                         coverage: {
                             1: 1,
