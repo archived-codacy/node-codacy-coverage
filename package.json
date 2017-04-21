@@ -34,7 +34,8 @@
     "lcov-parse": "0.x",
     "lodash": "^4.17.4",
     "log-driver": "^1.x",
-    "request-promise": "^0.x"
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
   },
   "devDependencies": {
     "buddy.js": "~0.x",
