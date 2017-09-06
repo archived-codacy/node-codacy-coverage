@@ -49,13 +49,6 @@
                     });
                 });
         });
-        it('shouldn\'t be able to send coverage with 0 hits on a line', function () {
-            sampleCoverageData.fileReports[0].coverage['3'] = 0;
-
-            return expect(reporter({})
-                .sendCoverage('1234', '4321', 'javascript', sampleCoverageData))
-                .to.eventually.be.rejectedWith(Error, 'child "fileReports" fails because ["fileReports" does not contain 1 required value(s)]');
-        });
         it('shouldn\'t be able to create a reporter with invalid options', function () {
             return expect(function () {
                 reporter({endpoint: 1});
