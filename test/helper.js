@@ -19,14 +19,35 @@
             return resolve(nock('https://api.codacy.com')
                 .post('/2.0/coverage/' + commitId + '/javascript', function (body) {
                     var result = bodyValidator.validate(body);
-                    return result.error ? false : true;
+
+                    return !result.error;
                 })
                 .reply(statusCode || 200));
         });
     }
 
+    function setupLangMockEndpoint(token, commitId, bodyValidator, language) {
+        return new Promise(function (resolve) {
+            expect(token).to.be.ok();
+            expect(commitId).to.be.ok();
+            expect(bodyValidator).to.be.ok();
+
+            return resolve(nock('https://api.codacy.com')
+                .post('/2.0/coverage/' + commitId + '/' + language, function (body) {
+
+                    console.error('<BODY>');
+                    console.error(body);
+                    console.error('</BODY>');
+
+                    var result = bodyValidator.validate(body);
+                    return !(result.error);
+                }).reply(200));
+        });
+    }
+
     module.exports = {
         setupMockEndpoint: setupMockEndpoint,
+        setupLangMockEndpoint: setupLangMockEndpoint,
         chai: chai,
         clearEnvironmentVariables: function () {
             process.env.CODACY_GIT_COMMIT = '';
