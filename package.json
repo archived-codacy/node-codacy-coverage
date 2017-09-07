@@ -37,7 +37,6 @@
     "request-promise": "^0.x"
   },
   "devDependencies": {
-    "buddy.js": "~0.x",
     "chai": "^2.3.x",
     "chai-as-promised": "^5.0.x",
     "dirty-chai": "^1.x",
@@ -49,7 +48,7 @@
     "eslint": "^3.x"
   },
   "scripts": {
-    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && eslint . && buddy index.js lib test && nsp check",
-    "test-only": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && buddy index.js lib test && nsp check"
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && eslint . && nsp check",
+    "test-only": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && nsp check"
   }
 }
