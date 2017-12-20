@@ -38,15 +38,15 @@
     "request-promise": "^4.x"
   },
   "devDependencies": {
-    "chai": "^2.3.x",
-    "chai-as-promised": "^5.0.x",
-    "dirty-chai": "^1.x",
-    "nsp": "^2.0.x",
-    "mocha": "^2.x",
-    "nock": "^2.0.x",
+    "chai": "^4.1.x",
+    "chai-as-promised": "^7.1.x",
+    "dirty-chai": "^2.x",
+    "nsp": "^3.1.x",
+    "mocha": "^4.x",
+    "nock": "^9.1.x",
     "istanbul": "~0.x",
     "jsinspect": "~0.x",
-    "eslint": "^3.x"
+    "eslint": "^4.x"
   },
   "scripts": {
     "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && eslint . && nsp check",
