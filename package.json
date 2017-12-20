@@ -28,13 +28,14 @@
     "codacy-coverage": "./bin/codacy-coverage.js"
   },
   "dependencies": {
-    "bluebird": "^2.9.x",
+    "bluebird": "^3.5.x",
     "commander": "^2.x",
-    "joi": "^6.4.x",
-    "lcov-parse": "0.x",
+    "joi": "^13.x",
+    "lcov-parse": "^1.x",
     "lodash": "^4.17.4",
     "log-driver": "^1.x",
-    "request-promise": "^0.x"
+    "request": "^2.83.0",
+    "request-promise": "^4.x"
   },
   "devDependencies": {
     "chai": "^2.3.x",
