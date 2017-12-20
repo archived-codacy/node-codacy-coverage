@@ -25,24 +25,24 @@
                     },
                     total: 0
                 }),
-                    Joi.compile({
-                        filename: path.normalize('FileB.js'),
-                        coverage: {
-                            1: 0,
-                            2: 0
-                        },
-                        total: 0
-                    }),
-                    Joi.compile({
-                        filename: path.normalize('FileC.js'),
-                        coverage: {
-                            1: 1,
-                            2: 1,
-                            3: 1,
-                            7: 0
-                        },
-                        total: 75
-                    }))
+                Joi.compile({
+                    filename: path.normalize('FileB.js'),
+                    coverage: {
+                        1: 0,
+                        2: 0
+                    },
+                    total: 0
+                }),
+                Joi.compile({
+                    filename: path.normalize('FileC.js'),
+                    coverage: {
+                        1: 1,
+                        2: 1,
+                        3: 1,
+                        7: 0
+                    },
+                    total: 75
+                }))
             };
 
             return helper.setupMockEndpoint('1234', '4321', Joi.compile(expectedCoverage))
@@ -68,16 +68,16 @@
                     },
                     total: 0
                 }),
-                    Joi.compile({
-                        filename: path.normalize('FileC.js'),
-                        coverage: {
-                            1: 1,
-                            2: 1,
-                            3: 1,
-                            7: 0
-                        },
-                        total: 75
-                    }))
+                Joi.compile({
+                    filename: path.normalize('FileC.js'),
+                    coverage: {
+                        1: 1,
+                        2: 1,
+                        3: 1,
+                        7: 0
+                    },
+                    total: 75
+                }))
             };
             var expectedCoverageTS = {
                 total: 40,
@@ -91,13 +91,13 @@
                     },
                     total: 50
                 }),
-                    Joi.compile({
-                        filename: path.normalize('FileB2.ts'),
-                        coverage: {
-                            1: 0
-                        },
-                        total: 0
-                    }))
+                Joi.compile({
+                    filename: path.normalize('FileB2.ts'),
+                    coverage: {
+                        1: 0
+                    },
+                    total: 0
+                }))
             };
 
             return new Promise.all(
