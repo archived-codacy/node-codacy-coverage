@@ -45,11 +45,12 @@
 
             helper.setupMockEndpoint('1234', '4321', Joi.compile(bodyObject)).then(function () {
                 exec('cat ./test/mock/lcov.info | node ./bin/codacy-coverage.js --token 1234 --commit 4321', function (err, res) {
-                    if (err) {
-                        return done(err);
+                    if (!err) {
+                        return done(new Error('Should return with error'));
                     }
 
                     expect(res).to.match(/Status Code \[404\] - Error \[{"error":"not found"}\]/);
+                    expect(err.code).to.equal(1);
                     //nock.done(); //TODO: Need to figure out how to use nock here. Since it's a separate process, it's not tied together.
                     done();
                 });
@@ -57,12 +58,13 @@
         });
         it('should be able to set options', function (done) {
             exec('cat ./test/mock/no-lines.info | node ./bin/codacy-coverage.js --debug --verbose --token 1234 --commit 4321 --prefix asdf/ --endpoint something --format lcov', function (err, res) {
-                if (err) {
-                    return done(err);
+                if (!err) {
+                    return done(new Error('Should return with error'));
                 }
 
                 expect(res).to.match(/Started with: token \["1234"], commitId \["4321"], language \[undefined], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
                 expect(res).to.match(/Handling input for: token \["1234"], commitId \["4321"], language \[undefined], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
+                expect(err.code).to.equal(1);
                 done();
             });
         });
