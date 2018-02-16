@@ -45,9 +45,25 @@
         });
     }
 
+    function setupMockAccountApiEndpoint(apiToken, commitId, username, projectName, bodyValidator) {
+        return new Promise(function (resolve) {
+            expect(apiToken).to.be.ok();
+            expect(commitId).to.be.ok();
+            expect(username).to.be.ok();
+            expect(projectName).to.be.ok();
+            expect(bodyValidator).to.be.ok();
+            return resolve(nock('https://api.codacy.com')
+                .post('/2.0/' + username + '/' + projectName + '/commit/' + commitId + '/coverage' + '/javascript', function(body) {
+                    var result = bodyValidator.validate(body);
+                    return !result.error;
+                }).reply(200));
+        });
+    }
+
     module.exports = {
         setupMockEndpoint: setupMockEndpoint,
         setupLangMockEndpoint: setupLangMockEndpoint,
+        setupMockAccountApiEndpoint: setupMockAccountApiEndpoint,
         chai: chai,
         clearEnvironmentVariables: function () {
             process.env.CODACY_GIT_COMMIT = '';
