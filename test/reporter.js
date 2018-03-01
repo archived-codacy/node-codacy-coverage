@@ -49,6 +49,20 @@
                     });
                 });
         });
+        it('should be able to use the account api mock end-point', function() {
+            return helper.setupMockAccountApiEndpoint('1234', '4321', 'username', 'project-name', bodyValidator)
+                .then(function() {
+                    return expect(request({
+                        url: 'https://api.codacy.com/2.0/username/project-name/commit/4321/coverage/javascript',
+                        method: 'POST',
+                        json: sampleCoverageData,
+                        resolveWithFullResponse: true
+                    }).promise()).to.eventually.satisfy(function (res) {
+                        expect(res.statusCode).to.equal(200);
+                        return true;
+                    });
+                });
+        });
         it('shouldn\'t be able to create a reporter with invalid options', function () {
             return expect(function () {
                 reporter({endpoint: 1});
@@ -76,6 +90,22 @@
                     return expect(reporter({})
                         .sendCoverage('1234', '4321', 'javascript', sampleCoverageData))
                         .to.eventually.be.rejectedWith(Error, 'Expected Successful Status Code, but got [418]');
+                });
+        });
+        it('should be able to report data with an api token', function() {
+            return helper.setupMockAccountApiEndpoint('1234', '4321', 'username', 'project-name', bodyValidator)
+                .then(function() {
+                    return expect(reporter({accountToken: '1234'})
+                        .sendCoverage(null, '4321', 'javascript', sampleCoverageData, '1234', 'username', 'project-name'))
+                        .to.eventually.be.fulfilled();
+                });
+        });
+        it('should not report data without a project name', function() {
+            return helper.setupMockAccountApiEndpoint('1234', '4321', 'username', 'project-name', bodyValidator)
+                .then(function() {
+                    return expect(reporter({accountToken: '1234'})
+                        .sendCoverage(null, '4321', 'javascript', sampleCoverageData, '1234', null, 'project-name'))
+                        .to.eventually.be.rejected();
                 });
         });
     });

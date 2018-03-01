@@ -62,8 +62,8 @@
                     return done(new Error('Should return with error'));
                 }
 
-                expect(res).to.match(/Started with: token \["1234"], commitId \["4321"], language \[undefined], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
-                expect(res).to.match(/Handling input for: token \["1234"], commitId \["4321"], language \[undefined], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
+                expect(res).to.match(/Started with: token \["1234"], accountToken \[undefined], username \[undefined], projectName \[undefined], commitId \["4321"], language \[undefined], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
+                expect(res).to.match(/Handling input for: token \["1234"], accountToken \[undefined], username \[undefined], projectName \[undefined], commitId \["4321"], language \[undefined], endpoint \["something"], format \["lcov"], path prefix \["asdf\/"], verbose \[true], debug \[true]/);
                 expect(err.code).to.equal(1);
                 done();
             });
