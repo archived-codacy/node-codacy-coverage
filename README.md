@@ -1,131 +1,206 @@
 # Node Codacy Coverage
+
 Credits to [David](https://github.com/DavidTPate) for creating this!
 [Codacy](https://codacy.com/) support for Node.js. Get coverage reporting and code analysis for Node.js from Codacy.
 
-
+[![Codacy](https://api.codacy.com/project/badge/grade/3c7f5de6ce734762981d3e689de7b941)](https://www.codacy.com/app/codacy/node-codacy-coverage)
+[![Codacy](https://api.codacy.com/project/badge/coverage/3c7f5de6ce734762981d3e689de7b941)](https://www.codacy.com/app/codacy/node-codacy-coverage)
 [![Build Status](https://circleci.com/gh/codacy/node-codacy-coverage.png?style=shield&circle-token=:circle-token)](https://circleci.com/gh/codacy/node-codacy-coverage)
 [![npm](https://img.shields.io/npm/v/codacy-coverage.svg)](https://www.npmjs.com/package/codacy-coverage)
 [![npm](https://img.shields.io/npm/dm/codacy-coverage.svg)](https://www.npmjs.com/package/codacy-coverage)
-[![Codacy](https://api.codacy.com/project/badge/grade/3c7f5de6ce734762981d3e689de7b941)](https://www.codacy.com/app/codacy/node-codacy-coverage)
-[![Codacy](https://api.codacy.com/project/badge/coverage/3c7f5de6ce734762981d3e689de7b941)](https://www.codacy.com/app/codacy/node-codacy-coverage)
 [![David](https://img.shields.io/david/codacy/node-codacy-coverage.svg)](https://david-dm.org/codacy/node-codacy-coverage)
 [![David](https://img.shields.io/david/dev/codacy/node-codacy-coverage.svg)](https://david-dm.org/codacy/node-codacy-coverage)
 [![David](https://img.shields.io/david/peer/codacy/node-codacy-coverage.svg)](https://david-dm.org/codacy/node-codacy-coverage)
 
-## Installation:
+## Installation
+
 Add the latest version of `codacy-coverage` to your package.json:
-```
+
+```sh
 npm install codacy-coverage --save
 ```
 
 If you're using mocha, add `mocha-lcov-reporter` to your package.json:
-```
+
+```sh
 npm install mocha-lcov-reporter --save
 ```
 
-## Usage:
+## Enterprise
 
-This script ( `bin/codacy-coverage.js` ) can take standard input from any tool that emits the lcov data format (including [mocha](http://mochajs.org)'s [LCov reporter](https://npmjs.org/package/mocha-lcov-reporter)) and send it to Codacy to report your code coverage there.
+To send coverage in the enterprise version you should specify your Codacy installation URL:
 
-Once your app is instrumented for coverage, and building, you need to pipe the lcov output to `./node_modules/.bin/codacy-coverage`.
+```sh
+codacy-coverage -e <YOUR-CODACY-ENTERPRISE-URL>:16006
+```
+
+## Usage
+
+This cli can take standard input from any tool that emits the lcov data format (including [mocha](http://mochajs.org)'s [LCov reporter](https://npmjs.org/package/mocha-lcov-reporter)) and send it to Codacy to report your code coverage there.
+
+Once your app is instrumented for coverage, and building, you need to pipe the lcov output to `codacy-coverage`.
 
 You'll need to provide the Report token from Codacy via an environment variable:
+
 * CODACY_PROJECT_TOKEN (the secret repo token from Codacy.com)
 
 > Note: You should keep your API token well **protected**, as it grants owner permissions to your projects.
 
-**Enterprise**
-
-To send coverage in the enterprise version you should specify your Codacy installation URL:
-```
-codacy-coverage -e <YOUR-URL>:16006
-```
-
 ### [Mocha](http://mochajs.org) + [Blanket.js](https://github.com/alex-seville/blanket)
-- Install [blanket.js](http://blanketjs.org/)
-- Configure blanket according to [docs](https://github.com/alex-seville/blanket/blob/master/docs/getting_started_node.md).
-- Run your tests with a command like this:
+
+* Install [blanket.js](http://blanketjs.org/)
+* Configure blanket according to [docs](https://github.com/alex-seville/blanket/blob/master/docs/getting_started_node.md).
+* Add test with coverage step to your package.json:
+
+```json
+"scripts": {
+  "test-with-coverage": "NODE_ENV=test YOURPACKAGE_COVERAGE=1 mocha --require blanket --reporter mocha-lcov-reporter | codacy-coverage"
+}
+```
+
+* Run your tests with:
 
 ```sh
-NODE_ENV=test YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha \
-  --require blanket \
-  --reporter mocha-lcov-reporter | ./node_modules/.bin/codacy-coverage
+npm run test-with-coverage
 ```
+
 ### [Mocha](http://mochajs.org) + [JSCoverage](https://github.com/fishbar/jscoverage)
 
 Instrumenting your app for coverage is probably harder than it needs to be (read [here](http://www.seejohncode.com/2012/03/13/setting-up-mocha-jscoverage/)), but that's also a necessary step.
 
-In mocha, if you've got your code instrumented for coverage, the command for a travis build would look something like this:
-```sh
-YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter | ./node_modules/.bin/codacy-coverage
+* Add test with coverage step to your package.json:
+
+```json
+"scripts": {
+  "test-with-coverage": "YOURPACKAGE_COVERAGE=1 mocha test -R mocha-lcov-reporter | codacy-coverage"
+}
 ```
+
+* Run your tests with:
+
+```sh
+npm run test-with-coverage
+```
+
 ### [Istanbul](https://github.com/gotwarlost/istanbul)
 
-**With Mocha:**
+#### With Mocha
 
-```sh
-istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage
+* Add test with coverage step to your package.json:
+
+```json
+"scripts": {
+  "test-with-coverage": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage"
+}
 ```
 
-**With Jasmine:**
+* Run your tests with:
 
 ```sh
-istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage
+npm run test-with-coverage
 ```
 
-### [Grunt](http://gruntjs.com/)
-- Install & Configure [grunt-codacy](https://www.npmjs.com/package/grunt-codacy)
+#### With Jasmine
+
+* Add test with coverage step to your package.json:
+
+```json
+"scripts": {
+  "test-with-coverage": "istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage"
+}
+```
+
+* Run your tests with:
+
+```sh
+npm run test-with-coverage
+```
 
 ### [Poncho](https://github.com/deepsweet/poncho)
+
 Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomjs), [Mocha](http://mochajs.org) and [Blanket](https://github.com/alex-seville/blanket):
-- [Configure](http://mochajs.org#browser-support) Mocha for browser
-- [Mark](https://github.com/deepsweet/poncho#usage) target script(s) with `data-cover` html-attribute
-- Run your tests with a command like this:
+
+* [Configure](http://mochajs.org#browser-support) Mocha for browser
+* [Mark](https://github.com/deepsweet/poncho#usage) target script(s) with `data-cover` html-attribute
+* Add test with coverage step to your package.json:
+
+```json
+"scripts": {
+  "test-with-coverage": "poncho -R lcov test/test.html | codacy-coverage"
+}
+```
+
+* Run your tests with:
 
 ```sh
-./node_modules/.bin/poncho -R lcov test/test.html | ./node_modules/.bin/codacy-coverage
+npm run test-with-coverage
 ```
 
 ### [Jest](https://facebook.github.io/jest/)
 
+* Add test with coverage step to your package.json:
+
+```json
+"scripts": {
+  "test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
+}
+```
+
+* Run your tests with:
+
 ```sh
-jest --coverage && CODACY_PROJECT_TOKEN='xxxxxxxxxxxxx' | cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+npm run test-with-coverage
 ```
 
-### [gulp](http://gulpjs.com/)
-- Install & Configure [gulp-codacy](https://www.npmjs.com/package/gulp-codacy)
+## Extras
 
-### Custom Language (Typescript, Coffeescript)
+### Force custom language (e.g. Typescript, Coffeescript, C, ...)
 
-- Pass an extra parameter to the codacy-coverage reporter `--language typescript` or `--language coffeescript`.
-- If you have multiple language you need to invoke the reporter once for each of them.
+* Pass an extra parameter to the codacy-coverage reporter `--language typescript` or `--language coffeescript`.
+* If you have multiple languages you need to invoke the reporter for each of them.
 
-### Troubleshooting
+## Troubleshooting
 
-The paths in your coverage file should be relative, if you are having problems with absolute paths, you can run our plugin with `-p .` to strip the current path from the paths in your coverage file:
+### Path Problems
+
+The paths in your coverage file should be relative,
+if you are having problems with absolute paths,
+you can run our plugin with `-p .` to strip the current path from the paths in your coverage file:
+
+```json
+"scripts": {
+  "test-with-coverage": "cat ./coverage/lcov.info | codacy-coverage -p ."
+}
 ```
-cat ./coverage/lcov.info | node_modules/.bin/codacy-coverage -p .
-```
 
-To send coverage in the <strong>enterprise</strong> version you should specify your Codacy installation URL followed by the port 16006 using the -e option, example:
-```
-cat ./coverage/lcov.info | node_modules/.bin/codacy-coverage -e <YOUR-URL>:16006
+### Enterprise Coverage
+
+To send coverage in the **enterprise** version you should specify your Codacy installation URL followed by the port 16006 using the -e option, example:
+
+```json
+"scripts": {
+  "test-with-coverage": "cat ./coverage/lcov.info | codacy-coverage -e <YOUR-CODACY-ENTERPRISE-URL>:16006"
+}
 ```
 
 ## License
+
 [MIT](LICENSE)
 
-## What is Codacy?
+## What is Codacy
 
-[Codacy](https://www.codacy.com/) is an Automated Code Review Tool that monitors your technical debt, helps you improve your code quality, teaches best practices to your developers, and helps you save time in Code Reviews.
+[Codacy](https://www.codacy.com/) is an Automated Code Review Tool that monitors your technical debt,
+helps you improve your code quality,
+teaches best practices to your developers,
+and helps you save time in Code Reviews.
 
-### Among Codacy’s features:
+### Among Codacy’s features
 
- - Identify new Static Analysis issues
- - Commit and Pull Request Analysis with GitHub, BitBucket/Stash, GitLab (and also direct git repositories)
- - Auto-comments on Commits and Pull Requests
- - Integrations with Slack, HipChat, Jira, YouTrack
- - Track issues Code Style, Security, Error Proneness, Performance, Unused Code and other categories
+* Identify new Static Analysis issues
+* Commit and Pull Request Analysis with GitHub, BitBucket/Stash, GitLab (and also direct git repositories)
+* Auto-comments on Commits and Pull Requests
+* Integrations with Slack, HipChat, Jira, YouTrack
+* Track issues Code Style, Security, Error Proneness, Performance, Unused Code and other categories
 
 Codacy also helps keep track of Code Coverage, Code Duplication, and Code Complexity.
 

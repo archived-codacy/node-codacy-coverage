@@ -1,11 +1,14 @@
 test:
   override:
-    - nvm install 0.10.48 && npm run test-only
-    - nvm install 0.11.16 && npm run test-only
-    - nvm install 0.12.18 && npm run test-only
-    - nvm install 4.7.2 && npm run test
+    - nvm install 4.8.7 && npm run test
     - nvm install 5.12.0 && npm run test
-    - nvm install 6.9.4 && npm run test
-    - nvm install 7.4.0 && npm run test
+    - nvm install 6.13.0 && npm run test
+    - nvm install 7.10.1 && npm run test
+    - nvm install 8.9.4 && npm run test
   post:
-    - chmod +x ./bin/codacy-coverage.js && cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
+    - nvm install 9.6.1
+    - nvm alias default v9.6.1
+    - nvm use default
+    - npm run test-all
+    - chmod +x ./bin/codacy-coverage.js
+    - cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
