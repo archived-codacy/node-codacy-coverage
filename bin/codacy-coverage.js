@@ -50,6 +50,7 @@
         }, function (err) {
             loggerImpl.error('Error sending coverage');
             loggerImpl.error(err);
+            process.exitCode = 1;
         });
     });
 
