@@ -154,6 +154,26 @@ npm run test-with-coverage
 
 ## Extras
 
+### Account Token
+
+To send coverage using your account/api token you can follow the following steps.
+
+* Add test with coverage step to your package.json:
+
+```json
+"scripts": {
+  "test-with-coverage": "cat ./coverage/lcov.info | codacy-coverage --accountToken <account-token> --username <username> --projectName <project-name>"
+}
+```
+
+* Run your tests with:
+
+```sh
+npm run test-with-coverage
+```
+
+As an alternative you can also export `CODACY_ACCOUNT_TOKEN` instead of passing `--accountToken <account-token>` to the CLI.
+
 ### Force custom language (e.g. Typescript, Coffeescript, C, ...)
 
 * Pass an extra parameter to the codacy-coverage reporter `--language typescript` or `--language coffeescript`.
