@@ -136,6 +136,22 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 npm run test-with-coverage
 ```
 
+### [Jest](https://facebook.github.io/jest/)
+
+* Add test with coverage step to your package.json:
+
+```json
+"scripts": {
+  "test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
+}
+```
+
+* Run your tests with:
+
+```sh
+npm run test-with-coverage
+```
+
 ## Extras
 
 ### Force custom language (e.g. Typescript, Coffeescript, C, ...)
