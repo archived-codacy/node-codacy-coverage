@@ -86,7 +86,7 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 ./node_modules/.bin/poncho -R lcov test/test.html | ./node_modules/.bin/codacy-coverage
 ```
 
-### [Jest]
+### [Jest](https://facebook.github.io/jest/)
 
 ```sh
 jest --coverage && CODACY_PROJECT_TOKEN='xxxxxxxxxxxxx' | cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
