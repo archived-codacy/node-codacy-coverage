@@ -27,6 +27,9 @@
   "bin": {
     "codacy-coverage": "./bin/codacy-coverage.js"
   },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
   "dependencies": {
     "bluebird": "^3.5.x",
     "commander": "^2.x",
@@ -49,7 +52,9 @@
     "eslint": "^4.x"
   },
   "scripts": {
-    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && eslint . && nsp check",
-    "test-only": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/ && nsp check"
+    "lint-style": "eslint .",
+    "lint-dependencies": "nsp check",
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/",
+    "test-all": "npm run lint-style && npm run lint-dependencies && npm run test"
   }
 }
