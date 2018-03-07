@@ -28,7 +28,7 @@ npm install mocha-lcov-reporter --save
 
 ## Enterprise
 
-To send coverage in the enterprise version you should specify your Codacy installation URL:
+To send coverage in the enterprise version you should specify your Codacy installation URL with the option `-e`:
 
 ```sh
 codacy-coverage -e <YOUR-CODACY-ENTERPRISE-URL>:16006
@@ -40,13 +40,18 @@ This cli can take standard input from any tool that emits the lcov data format (
 
 Once your app is instrumented for coverage, and building, you need to pipe the lcov output to `codacy-coverage`.
 
-You'll need to provide the Report token from Codacy via an environment variable:
+### Identifying the project
 
-* CODACY_PROJECT_TOKEN (the secret repo token from Codacy.com)
+You'll need to provide the secret Project API token from `Codacy Project > Settings > Integrations > Project API` via:
 
-> Note: You should keep your API token well **protected**, as it grants owner permissions to your projects.
+* (Recommended) Environment variable: CODACY_PROJECT_TOKEN
+* CLI parameter variable: `--token`
 
-### [Mocha](http://mochajs.org) + [Blanket.js](https://github.com/alex-seville/blanket)
+> Note: You should keep your any API token well **protected**, as it grants owner permissions to your projects.
+
+### Test Coverage
+
+#### [Mocha](http://mochajs.org) + [Blanket.js](https://github.com/alex-seville/blanket)
 
 * Install [blanket.js](http://blanketjs.org/)
 * Configure blanket according to [docs](https://github.com/alex-seville/blanket/blob/master/docs/getting_started_node.md).
@@ -64,7 +69,7 @@ You'll need to provide the Report token from Codacy via an environment variable:
 npm run test-with-coverage
 ```
 
-### [Mocha](http://mochajs.org) + [JSCoverage](https://github.com/fishbar/jscoverage)
+#### [Mocha](http://mochajs.org) + [JSCoverage](https://github.com/fishbar/jscoverage)
 
 Instrumenting your app for coverage is probably harder than it needs to be (read [here](http://www.seejohncode.com/2012/03/13/setting-up-mocha-jscoverage/)), but that's also a necessary step.
 
@@ -82,9 +87,9 @@ Instrumenting your app for coverage is probably harder than it needs to be (read
 npm run test-with-coverage
 ```
 
-### [Istanbul](https://github.com/gotwarlost/istanbul)
+#### [Istanbul](https://github.com/gotwarlost/istanbul)
 
-#### With Mocha
+##### With Mocha
 
 * Add test with coverage step to your package.json:
 
@@ -100,7 +105,7 @@ npm run test-with-coverage
 npm run test-with-coverage
 ```
 
-#### With Jasmine
+##### With Jasmine
 
 * Add test with coverage step to your package.json:
 
@@ -116,7 +121,7 @@ npm run test-with-coverage
 npm run test-with-coverage
 ```
 
-### [Poncho](https://github.com/deepsweet/poncho)
+#### [Poncho](https://github.com/deepsweet/poncho)
 
 Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomjs), [Mocha](http://mochajs.org) and [Blanket](https://github.com/alex-seville/blanket):
 
@@ -136,7 +141,7 @@ Client-side JS code coverage using [PhantomJS](https://github.com/ariya/phantomj
 npm run test-with-coverage
 ```
 
-### [Jest](https://facebook.github.io/jest/)
+#### [Jest](https://facebook.github.io/jest/)
 
 * Add test with coverage step to your package.json:
 
@@ -156,7 +161,7 @@ npm run test-with-coverage
 
 ### Account Token
 
-To send coverage using your account/api token you can follow the following steps.
+As an alternative to the Project API token you can also send coverage using your account/api token by following steps:
 
 * Add test with coverage step to your package.json:
 
@@ -172,7 +177,10 @@ To send coverage using your account/api token you can follow the following steps
 npm run test-with-coverage
 ```
 
-As an alternative you can also export `CODACY_ACCOUNT_TOKEN` instead of passing `--accountToken <account-token>` to the CLI.
+You'll need to provide the secret Account API token from [Codacy Account](https://app.codacy.com/account/apiTokens)` > API Tokens` via:
+
+* (Recommended) Environment variable: CODACY_ACCOUNT_TOKEN
+* CLI parameter variable: `--accountToken`
 
 ### Force custom language (e.g. Typescript, Coffeescript, C, ...)
 
