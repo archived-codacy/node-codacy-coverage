@@ -39,6 +39,10 @@
             process.env.WERCKER_GIT_COMMIT = '5232';
             return expect(getGitData.getCommitId()).to.eventually.equal('5232');
         });
+        it('should be able to get the commit id from the Buildkite environment variable', function () {
+            process.env.BUILDKITE_COMMIT = '47326';
+            return expect(getGitData.getCommitId()).to.eventually.equal('47326');
+        });
         it('should be able to get the commit id from Git', function () {
             // If we are currently running on Travis, we should be able to use the commit id environment variable
             // to check the git commit id method with actual git. But we can't do this for Pull Requests because
