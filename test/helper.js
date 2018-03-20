@@ -73,6 +73,7 @@
             process.env.CIRCLE_SHA1 = '';
             process.env.CI_COMMIT_ID = '';
             process.env.WERCKER_GIT_COMMIT = '';
+            process.env.BUILDKITE_COMMIT = '';
         }
     };
 }(require('nock'), require('chai'), require('bluebird')));
