@@ -187,6 +187,11 @@ You'll need to provide the secret Account API token from [Codacy Account](https:
 * Pass an extra parameter to the codacy-coverage reporter `--language typescript` or `--language coffeescript`.
 * If you have multiple languages you need to invoke the reporter for each of them.
 
+### Run in Windows
+
+If you are running coverage in a windows machine without Unix tools,
+you need to change the command to `codacy-coverage < ./test/unit/coverage/lcov.info`.
+
 ## Troubleshooting
 
 ### Path Problems
