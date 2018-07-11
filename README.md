@@ -147,7 +147,7 @@ npm run test-with-coverage
 
 ```json
 "scripts": {
-  "test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
+  "test-with-coverage": "jest --coverage || cat ./coverage/lcov.info | codacy-coverage"
 }
 ```
 
