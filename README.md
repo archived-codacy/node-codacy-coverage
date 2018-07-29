@@ -145,6 +145,8 @@ npm run test-with-coverage
 
 * Add test with coverage step to your package.json:
 
+Note: [jest might return exit code 1](https://github.com/facebook/jest/issues/3520) if you defined a coverage threshold and the threshold is not met
+
 ```json
 "scripts": {
   "test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"

@@ -44,7 +44,6 @@
     "chai": "^4.1.x",
     "chai-as-promised": "^7.1.x",
     "dirty-chai": "^2.x",
-    "nsp": "^3.1.x",
     "mocha": "^4.x",
     "nock": "^9.1.x",
     "istanbul": "~0.x",
@@ -53,7 +52,7 @@
   },
   "scripts": {
     "lint-style": "eslint .",
-    "lint-dependencies": "nsp check",
+    "lint-dependencies": "npm audit",
     "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks  --timeout 30000 --reporter spec test/",
     "test-all": "npm run lint-style && npm run lint-dependencies && npm run test"
   }
