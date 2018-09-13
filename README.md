@@ -218,6 +218,26 @@ To send coverage in the **enterprise** version you should specify your Codacy in
 }
 ```
 
+## Options
+
+```bash
+Options:
+
+  -V, --version               output the version number
+  -f, --format [value]        Coverage input format
+  -t, --token [value]         Codacy Project API Token
+  -a, --accountToken [value]  Codacy Account Token
+  -u, --username [value]      Codacy Username/Organization
+  -n, --projectName [value]   Codacy Project Name
+  -c, --commit [value]        Commit SHA hash
+  -l, --language [value       Project Language
+  -e, --endpoint [value]      Codacy API Endpoint
+  -p, --prefix [value]        Project path prefix
+  -v, --verbose               Display verbose output
+  -d, --debug                 Display debug output
+  -h, --help                  output usage information
+```
+
 ## License
 
 [MIT](LICENSE)
