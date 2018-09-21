@@ -169,7 +169,7 @@ As an alternative to the Project API token you can also send coverage using your
 
 ```json
 "scripts": {
-  "test-with-coverage": "cat ./coverage/lcov.info | codacy-coverage --accountToken <account-token> --username <username> --projectName <project-name>"
+  "test-with-coverage": "cat ./coverage/lcov.info | codacy-coverage --token <account-token> --username <username> --projectName <project-name>"
 }
 ```
 
