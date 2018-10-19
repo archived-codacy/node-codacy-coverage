@@ -37,7 +37,7 @@
     "lcov-parse": "^1.x",
     "lodash": "^4.17.4",
     "log-driver": "^1.x",
-    "request": "^2.83.0",
+    "request": "^2.88.0",
     "request-promise": "^4.x"
   },
   "devDependencies": {
