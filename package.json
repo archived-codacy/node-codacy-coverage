@@ -28,7 +28,7 @@
     "codacy-coverage": "./bin/codacy-coverage.js"
   },
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 8.12.0"
   },
   "dependencies": {
     "bluebird": "^3.5.x",
