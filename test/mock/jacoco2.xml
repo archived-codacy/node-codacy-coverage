@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.0//EN" "report.dtd">
+<report name="HelloWorld (13.11.2018 09:28:01)">
+   <sessioninfo id="DEV135NOB0148-4e9f728d" start="1542097680887" dump="1542097681194" />
+         <package name="testproject">
+            <class name="testproject/HelloWorld">
+               <method name="&lt;init&gt;" desc="()V" line="3">
+                  <counter type="INSTRUCTION" missed="3" covered="0" />
+                  <counter type="LINE" missed="1" covered="0" />
+                  <counter type="COMPLEXITY" missed="1" covered="0" />
+                  <counter type="METHOD" missed="1" covered="0" />
+               </method>
+               <method name="main" desc="([Ljava/lang/String;)V" line="5">
+                  <counter type="INSTRUCTION" missed="0" covered="4" />
+                  <counter type="LINE" missed="0" covered="2" />
+                  <counter type="COMPLEXITY" missed="0" covered="1" />
+                  <counter type="METHOD" missed="0" covered="1" />
+               </method>
+               <counter type="INSTRUCTION" missed="3" covered="4" />
+               <counter type="LINE" missed="1" covered="2" />
+               <counter type="COMPLEXITY" missed="1" covered="1" />
+               <counter type="METHOD" missed="1" covered="1" />
+               <counter type="CLASS" missed="0" covered="1" />
+            </class>
+            <class name="testproject/SampleA">
+               <method name="&lt;init&gt;" desc="()V" line="3">
+                  <counter type="INSTRUCTION" missed="3" covered="0" />
+                  <counter type="LINE" missed="1" covered="0" />
+                  <counter type="COMPLEXITY" missed="1" covered="0" />
+                  <counter type="METHOD" missed="1" covered="0" />
+               </method>
+               <counter type="INSTRUCTION" missed="3" covered="0" />
+               <counter type="LINE" missed="1" covered="0" />
+               <counter type="COMPLEXITY" missed="1" covered="0" />
+               <counter type="METHOD" missed="1" covered="0" />
+               <counter type="CLASS" missed="1" covered="0" />
+            </class>
+            <class name="testproject/SampleB">
+               <method name="&lt;init&gt;" desc="()V" line="3">
+                  <counter type="INSTRUCTION" missed="3" covered="0" />
+                  <counter type="LINE" missed="1" covered="0" />
+                  <counter type="COMPLEXITY" missed="1" covered="0" />
+                  <counter type="METHOD" missed="1" covered="0" />
+               </method>
+               <counter type="INSTRUCTION" missed="3" covered="0" />
+               <counter type="LINE" missed="1" covered="0" />
+               <counter type="COMPLEXITY" missed="1" covered="0" />
+               <counter type="METHOD" missed="1" covered="0" />
+               <counter type="CLASS" missed="1" covered="0" />
+            </class>
+            <sourcefile name="SampleA.java">
+               <line nr="3" mi="3" ci="0" mb="0" cb="0" />
+               <counter type="INSTRUCTION" missed="3" covered="0" />
+               <counter type="LINE" missed="1" covered="0" />
+               <counter type="COMPLEXITY" missed="1" covered="0" />
+               <counter type="METHOD" missed="1" covered="0" />
+               <counter type="CLASS" missed="1" covered="0" />
+            </sourcefile>
+            <sourcefile name="HelloWorld.java">
+               <line nr="3" mi="3" ci="0" mb="0" cb="0" />
+               <line nr="5" mi="0" ci="3" mb="0" cb="0" />
+               <line nr="6" mi="0" ci="1" mb="0" cb="0" />
+               <counter type="INSTRUCTION" missed="3" covered="4" />
+               <counter type="LINE" missed="1" covered="2" />
+               <counter type="COMPLEXITY" missed="1" covered="1" />
+               <counter type="METHOD" missed="1" covered="1" />
+               <counter type="CLASS" missed="0" covered="1" />
+            </sourcefile>
+            <sourcefile name="SampleB.java">
+               <line nr="3" mi="3" ci="0" mb="0" cb="0" />
+               <counter type="INSTRUCTION" missed="3" covered="0" />
+               <counter type="LINE" missed="1" covered="0" />
+               <counter type="COMPLEXITY" missed="1" covered="0" />
+               <counter type="METHOD" missed="1" covered="0" />
+               <counter type="CLASS" missed="1" covered="0" />
+            </sourcefile>
+            <counter type="INSTRUCTION" missed="9" covered="4" />
+            <counter type="LINE" missed="3" covered="2" />
+            <counter type="COMPLEXITY" missed="3" covered="1" />
+            <counter type="METHOD" missed="3" covered="1" />
+            <counter type="CLASS" missed="2" covered="1" />
+         </package>
+   <counter type="INSTRUCTION" missed="9" covered="4" />
+   <counter type="LINE" missed="3" covered="2" />
+   <counter type="COMPLEXITY" missed="3" covered="1" />
+   <counter type="METHOD" missed="3" covered="1" />
+   <counter type="CLASS" missed="2" covered="1" />
+</report>
