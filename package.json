@@ -35,6 +35,7 @@
     "commander": "^2.x",
     "joi": "^13.x",
     "lcov-parse": "^1.x",
+    "jacoco-parse": "^2.x",
     "lodash": "^4.17.4",
     "log-driver": "^1.x",
     "request": "^2.88.0",
