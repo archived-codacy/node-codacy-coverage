@@ -9,4 +9,4 @@ test:
     - nvm use default
     - npm run test-all
     - chmod +x ./bin/codacy-coverage.js
-    - cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
+    - if [ -n "$CODACY_PROJECT_TOKEN" ]; then cat ./coverage/lcov.info | node ./bin/codacy-coverage.js; fi
