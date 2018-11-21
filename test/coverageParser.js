@@ -5,8 +5,8 @@
     var validFormats = ['lcov','jacoco'];
     var errorMsg = new Map([
         {lcov: 'Failed to parse string'},
-        {jacoco: 'Request handle not found.'}
-    ]);
+        {jacoco: 'Failed to parse jacoco report: Error: Non-whitespace before first tag'}
+    ])
     describe('Coverage Parser', function () {
         it('should receive an error when trying to use an unsupported format', function () {
             expect(function () {
