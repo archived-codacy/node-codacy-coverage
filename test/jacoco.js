@@ -13,7 +13,7 @@
                         total: 23,
                         fileReports: [
                             {
-                                filename: 'com/wmbest/myapplicationtest/MainActivity.java',
+                                filename: path.normalize('com/wmbest/myapplicationtest/MainActivity.java'),
                                 coverage: {
                                     8: 0,
                                     11: 2,
@@ -42,7 +42,7 @@
                         total: 23,
                         fileReports: [
                             {
-                                filename: 'my-project/com/wmbest/myapplicationtest/MainActivity.java',
+                                filename: path.normalize('my-project/com/wmbest/myapplicationtest/MainActivity.java'),
                                 coverage: {
                                     8: 0,
                                     11: 2,
