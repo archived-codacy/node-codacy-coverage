@@ -31,25 +31,25 @@
     "node": ">= 8.12.0"
   },
   "dependencies": {
-    "bluebird": "^3.5.x",
-    "commander": "^2.x",
-    "joi": "^13.x",
+    "bluebird": "^3.7.0",
+    "commander": "^3.x",
+    "jacoco-parse": "^2.0.1",
+    "joi": "^14.x",
     "lcov-parse": "^1.x",
-    "jacoco-parse": "^2.x",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.15",
     "log-driver": "^1.x",
     "request": "^2.88.0",
-    "request-promise": "^4.x"
+    "request-promise": "^4.2.4"
   },
   "devDependencies": {
     "chai": "^4.1.x",
     "chai-as-promised": "^7.1.x",
     "dirty-chai": "^2.x",
-    "mocha": "^4.x",
+    "mocha": "^6.x",
     "nock": "^9.1.x",
     "istanbul": "~0.x",
     "jsinspect": "~0.x",
-    "eslint": "^4.x"
+    "eslint": "^6.x"
   },
   "scripts": {
     "lint-style": "eslint .",
