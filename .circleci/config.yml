@@ -1,0 +1,76 @@
+version: 2.1
+
+orbs:
+  codacy: codacy/base@1.0.0
+
+jobs:
+  build:
+    parameters:
+      node_version:
+          type: string
+    docker:
+      - image: circleci/node:<< parameters.node_version >>
+    working_directory: ~/workdir
+
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npm install
+      - run: |
+          if [ "<< parameters.node_version >>" == "latest" ]; then
+            npm run test-all
+          else
+            npm run test
+          fi
+      - run:
+          name: Coverage
+          command: |
+            if [ -n "$CODACY_PROJECT_TOKEN" ]; then
+              cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
+            else
+              echo "Skip sending coverage due to no provided codacy token!"
+            fi
+
+workflows:
+  version: 2
+  install_and_test:
+    jobs:
+      - codacy/checkout_and_version
+      - build:
+          name: build_6
+          node_version: "6"
+          requires:
+            - codacy/checkout_and_version
+      - build:
+          name: build_7
+          node_version: "7"
+          requires:
+            - codacy/checkout_and_version
+      - build:
+          name: build_8
+          node_version: "8"
+          requires:
+            - codacy/checkout_and_version
+      - build:
+          name: build_9
+          node_version: "9"
+          requires:
+            - codacy/checkout_and_version
+      - build:
+          name: build_latest
+          node_version: "latest"
+          requires:
+            - codacy/checkout_and_version
+      - codacy/tag_version:
+          filters:
+            branches:
+              only:
+                - master
+          name: tag_version
+          context: CodacyAWS
+          requires:
+            - build_6
+            - build_7
+            - build_8
+            - build_9
+            - build_latest
