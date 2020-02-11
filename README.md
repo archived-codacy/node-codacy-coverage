@@ -1,3 +1,7 @@
+# Deprecated
+
+This repository is no longer maintained. As an alternative, check [codacy-coverage-reporter](https://github.com/codacy/codacy-coverage-reporter) to send your test coverage results to your Codacy dashboard.
+
 # Node Codacy Coverage
 
 Credits to [David](https://github.com/DavidTPate) for creating this!
